@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My Planet</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a933b65614.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:600,700,900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: #111731;
+            font-family: 'Roboto','Noto Sans TC', sans-serif;
+        }
+        .wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .text-whith {
+            color: white;
+        }
+        .text-black {
+            color: black;
+        }
+        .hide {
+            display: none;
+        }
+        h1 {
+            font-family: 'Source Code Pro', monospace;
+            position: absolute;
+            font-weight: 900;
+            bottom: 15%;
+            text-align: center;
+            font-size: 4.5rem;
+            margin: 0;
+            padding: 0;
+            display: block;
+            width: 100%;
+        }
+        .object-fit-contain {
+            object-fit: contain;
+            
+        }
+        /*---------------header--------------------------*/
+        .header_bg {
+            height: 100vh;
+            position: relative;
+        }
+        .header_bg_cloud {
+            background: url(images/cloudy3.png) center center no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: calc(100vw - 30%);
+            max-height: 80vh;
+        }
+        .logo {
+            margin: 0 auto;
+            max-width: 50%;
+            /* transform: translateY(-100%); */
+            position: relative;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .rocky {
+            position: absolute;
+            bottom: 3%;
+            left: 48%;
+            /* transform: translate(-50%); */
+            cursor: pointer;
+        }
+        .rocky img {
+            width: 70%;
+        }
+        .rockyAni {
+            animation-name: rockyAni;
+            animation-duration: 1s;
+            animation-fill-mode: backwards;
+        }
+        @keyframes rockyAni {
+            from {
+                transform: translateY(0);
+                opacity: 1;
+                z-index: 1;
+            }
+            to {
+                transform: translateY(150%);
+                z-index: -1;
+                opacity: 0;
+            }
+        }
+        .star {
+            position: absolute;
+        }
+        .moon {
+            position: absolute;
+        }
+        .moon1 {
+            top: 15%;
+            left: 15%;
+        }
+        .star1 {
+            top: 30%;
+            left: 18%;
+        }
+        .star2 {
+            top: 10%;
+            left: 25%;
+        }
+        .star3 {
+            top: 7%;
+            left: 5%;
+        }
+        .moon2 {
+            top: 20%;
+            right: 10%;
+        }
+        .star4 {
+            top: 5%;
+            right: 4%;
+        }
+        .star5 {
+            top: 35%;
+            right: 6%;
+        }
+        .star6 {
+            top: 10%;
+            right: 25%;
+        }
+        @media screen and (max-width: 1200px){
+            
+        }
+        @media screen and (max-width: 991.98px){
+            .logo {
+                width: 40%;
+            }
+            h1 {
+                font-size: 3rem;
+            }
+        }
+        @media screen and (max-width: 767.98px){
+            .logo {
+                width: 40%;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+            .moon, .star {
+                width: 4%;
+            }
+            .moon img, .star img{
+                object-fit: contain;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        @media screen and (max-width: 575.98px){
+            .logo {
+                width: 40%;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
+        }
+        /*---------------nav--------------------------*/
+        .intro_bg {
+            background: url(images/BG-8.png) center center no-repeat;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+        }
+        nav {
+            background: rgba(0,0,0,.5);
+        }
+        nav .active {
+            background: #ffb68c;
+            color: #000;
+            font-weight: 600;
+        }
+        nav .nav-link:hover {
+            background: #ffb68c;
+            color: #000;
+            font-weight: 600;
+        }
+        /*---------------slide--------------------------*/
+        #planetSlide .active {
+            position: absolute;
+            width: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .planet-slide-node ul {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .planet-slide-node li {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .planet-slide-node li.active {
+            background: white;
+        }
+        /* ----------左右按鈕----------------------------------- */
+        .planet-slide-node {
+            position: relative;
+        }
+        .left, .right {
+            color: white;
+            font-size: 1.5rem;
+            position: absolute;
+            cursor: pointer;
+            z-index: 5;
+        }
+        .left {
+            left: 30%;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+        .right {
+            right: 30%;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+        .left::after {
+            content: "";
+            position: absolute;
+            width: 10vw;
+            height: 1px;
+            background: white;
+            top: 50%;
+        }
+        .right::after {
+            content: "";
+            position: absolute;
+            width: 10vw;
+            height: 1px;
+            background: white;
+            top: 50%;
+            left: -10vw;
+        } 
+        /* ---------------3D旋轉------------------------ */
+        #carousel .cloud9-item, #buttons button {
+            cursor: pointer;
+        }
+        .center {
+            top: 50%;
+            width: 1440px;
+            left: -720px;
+            margin-left: 50% ;
+            position: relative;
+            transform: translate(0 ,-50%);
+        }
+        .planet-wrapper {
+            /* width: 100%; */
+            height: 80vh;
+            margin: 0 auto;
+        }
+        .planet {
+            width: 30%;
+            height: 30vh;
+        }
+        .planet img {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+        /* ---------------星球介紹------------------------ */
+        .planet-content {
+            color: white;
+            border: 1px solid white;
+            padding: 15px 100px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+        .content-wrapper {
+            text-align: center;
+            padding: 50px 0;
+        }
+        @media screen and (max-width: 1200px) {
+            .center {
+                top: 50%;
+                width: 980px;
+                left: -490px;
+                margin-left: 50% ;
+                position: relative;
+                transform: translate(0 ,-50%);
+            }
+            .planet-content {
+                color: white;
+                border: 1px solid white;
+                padding: 10px 50px;
+                border-radius: 5px;
+                font-size: 1.2rem;
+            }
+        }
+        @media screen and (max-width: 767px) {
+            .center {
+                top: 50%;
+                width: 500px;
+                left: -250px;
+                margin-left: 50% ;
+                position: relative;
+                transform: translate(0 ,-50%);
+            }
+            .planet-content {
+                color: white;
+                border: 1px solid white;
+                padding: 10px 25px;
+                border-radius: 5px;
+                font-size: 1rem;
+            }
+            .left::after {
+                content: "";
+                position: absolute;
+                width: 2vw;
+                height: 1px;
+                background: white;
+                top: 50%;
+            }
+            .right::after {
+                content: "";
+                position: absolute;
+                width: 2vw;
+                height: 1px;
+                background: white;
+                top: 50%;
+                left: -2vw;
+            } 
+        }
+    </style>
+  </head>
+  <body>
+    <header >
+        <div class="header_bg ">
+            <figure class="animated  star star1 rubberBand delay-1s">
+                <img class="object-fit-contain" src="images/star.png" alt="">
+            </figure>
+            <figure class="animated  star star2 rubberBand delay-1s">
+                <img class="object-fit-contain" src="images/star.png" alt="">
+            </figure>
+            <figure class="animated  star star3 rubberBand delay-1s">
+                <img class="object-fit-contain" src="images/star.png" alt="">
+            </figure>
+            <figure class="animated  star star4 rubberBand delay-1s">
+                <img class="object-fit-contain" src="images/star.png" alt="">
+            </figure>
+            <figure class="animated  star star5 rubberBand delay-1s">
+                <img class="object-fit-contain" src="images/star.png" alt="">
+            </figure>
+            <figure class="animated  star star6 rubberBand delay-1s">
+                <img class="object-fit-contain" src="images/star.png" alt="">
+            </figure>
+            <figure class="animated  moon moon1 swing delay-1s">
+                <img class="object-fit-contain" src="images/moon.png" alt="">
+            </figure>
+            <figure class="animated  moon moon2 swing delay-1s">
+                <img class="object-fit-contain" src="images/moon.png" alt="">
+            </figure>
+            <div class="header_bg_cloud container-fluid">
+                <div class="row">
+                    
+                    <div class="logo animated bounceInDown">
+                        <h1 class="tlt " data-in-effect="bounceInDown">My Planet</h1>
+                        <img src="images/logo_bar-8.png" alt="logo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div id="rocky" class="rocky animated pulse delay-1s infinite">
+                        <img src="images/rocky.png" alt="rocky">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+    <section  class="intro_bg">
+        <nav class="sticky-top">
+            <ul class="d-flex  list-unstyled justify-content-center">
+                <li ><a class="nav-link active text-whith py-3 px-5" href="">星球介紹</a></li>
+                <li ><a class="nav-link text-whith py-3 px-5" href="test.html">星球測驗</a></li>
+                <li ><a class="nav-link text-whith py-3 px-5" href="page3.html">星球分佈</a></li>
+            </ul>
+        </nav>    
+        <!-- <div class=" container-fluid">
+            <div class="wrapper">
+                <div id="planetSlide" class="carousel d-flex justify-content-center align-items-center planet-wrapper">
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet1.svg" alt="Item #1">
+                    </div>
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet2.svg" alt="Item #2">
+                    </div>
+                    <div class="planet active cloud9-item carousel">
+                        <img src="images/planet3.svg" alt="Item #3">
+                    </div>
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet4.svg" alt="Item #4">
+                    </div>
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet1.svg" alt="Item #5">
+                    </div>
+                </div>
+                <div id="planetSlideNode" class="planet-slide-node">
+                    <ul class="d-flex justify-content-center align-items-center">
+                        <div class="left-button"><i class="fas fa-chevron-circle-left"></i></div>
+                        <li class="slide-left mx-2 "></li>
+                        <li class="mx-2"></li>
+                        <li class="mx-2 active"></li>
+                        <li class="mx-2"></li>
+                        <li class="slide-right mx-2"></li>
+                        <div class="right-button"><i class="fas fa-chevron-circle-right"></i></div>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+        <div class="center">
+           <div id="carousel" class="planet-wrapper">
+                <figure class="planet cloud9-item">
+                    <img data-tilt class="" src="images/planet1.svg" alt="Item #1">
+                    <div class="content-wrapper">
+                        <span class="planet-content planet-content1 ">火燒的寂寞</span>
+                    </div>
+                </figure>
+                <figure class="planet cloud9-item">
+                    <img data-tilt class="" src="images/planet2.svg" alt="Item #2">
+                    <div class="content-wrapper">
+                        <span class="planet-content planet-content2 hide">呆呆獸行星</span>
+                    </div>
+                </figure>
+                <figure class="planet cloud9-item">
+                    <img data-tilt class="" src="images/planet3.svg" alt="Item #3">
+                    <div class="content-wrapper">
+                        <span class="planet-content planet-content3 hide">青春的疤痕</span>
+                    </div>
+                </figure>
+                <figure class="planet cloud9-item">
+                    <img data-tilt class="" src="images/planet4.svg" alt="Item #4">
+                    <div class="content-wrapper">
+                        <span class="planet-content planet-content4 hide">少女的矛盾</span>
+                    </div>
+                </figure>
+                <figure class="planet cloud9-item">
+                    <img data-tilt class="" src="images/planet5.svg" alt="Item #5">  
+                    <div class="content-wrapper">
+                        <span class="planet-content planet-content5 hide">幼基拉星</span>
+                    </div>
+                </figure>
+            </div> 
+        </div>
+        <div id="buttons" class="planet-slide-node">
+            <div class="left"><i class="fas fa-chevron-circle-left"></i></div>
+            <div class="right"><i class="fas fa-chevron-circle-right"></i></div>
+            <ul  class="d-flex justify-content-center align-items-center list-unstyled">
+                <li class="mx-2 active"></li>
+                <li class="mx-2"></li>
+                <li class="mx-2"></li>
+                <li class="mx-2"></li>
+                <li class="mx-2"></li>
+            </ul>
+            
+        </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="plug-in\cloud9carousel-master/jquery.cloud9carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="plug-in/Letteringjs/jquery.lettering.js"></script>
+    <script src="plug-in/textillate-master/jquery.textillate.js"></script>
+    <script src="js/tilt_js/dest/tilt.jquery.min.js"></script> <!-- Load Tilt.js library -->
+    <script>
+    
+    $('.tlt').textillate(); // 文字動畫 
+
+    $('.js-tilt').tilt({
+        glare: true,
+        maxGlare: .5
+    })
+    // 點擊滾動
+        /* 寫法如下:
+        $(‘#按鈕名稱‘).click(function(){
+        $(‘html,body’).animate({scrollTop:$(‘#指定區塊塊名稱‘).offset().top}, 速度);
+        });*/
+
+        $("#rocky").click(function(){
+            $(this).removeClass("infinite").addClass("rockyAni")
+            $(".intro_bg").removeClass("hide")
+            $("html,body").delay(800).animate({
+                scrollTop:$(".intro_bg").offset().top
+            }, 800
+            );
+        });
+    
+    // 點擊星球本身
+    $(".planet").click(function(){
+        $(".planet-content").addClass("hide")
+        $(this).find(".planet-content").removeClass("hide")
+    })
+
+    // 左邊按鈕滑動
+    $(".left").click(function(){
+        $(".planet").each(function(){
+            let thisOne = $(this).attr("style")
+            let pos = thisOne.indexOf("scale(1)")
+            // console.log(thisOne)
+            // console.log(pos)
+            if ( pos == "123") {
+                $(this).find(".planet-content").addClass("hide")
+                $(this).next("figure").find(".planet-content").removeClass("hide")
+
+                let which = $(this).find("span").attr("class")
+                for (i=1 ; i<=5 ; i++) {
+                    let has = which.indexOf(i)
+                    console.log(i)
+                    if ( has>1 ) {
+                        whicPlanet = `planet-content${i}`
+                        switch (i) {
+                            case 1:
+                                $(".planet-slide-node ul li").eq(4).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 2:
+                                $(".planet-slide-node ul li").eq(3).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 3:
+                                $(".planet-slide-node ul li").eq(2).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 4:
+                                $(".planet-slide-node ul li").eq(1).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 5:
+                                $(".planet-slide-node ul li").eq(0).css("background","#fff").siblings().css("background","none");
+                                break;
+                        }
+                        break;
+                    }
+                }
+            }
+        })
+    })
+    // 右邊按鈕滑動
+    $(".right").click(function(){
+        $(".planet").each(function(){
+            
+            let thisOne = $(this).attr("style")
+            let pos = thisOne.indexOf("scale(1)")
+
+            // console.log(thisOne)
+            // console.log(pos)
+            
+
+            if ( pos == "123") {
+                let which = $(this).find("span").attr("class")
+                // console.log(which)
+                for (i=1 ; i<=5 ; i++) {
+                    let has = which.indexOf(i)
+                    // console.log(has)
+                    if ( has>1 ) {
+                        whicPlanet = `planet-content${i}`
+                        // console.log(whicPlanet)
+                        console.log(i)
+                        switch (i) {
+                            case 1:
+                                $(".planet-content5").removeClass("hide")
+                                $(".planet-slide-node ul li").eq(1).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 2:
+                                $(".planet-content1").removeClass("hide")
+                                $(".planet-slide-node ul li").eq(0).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 3:
+                                $(".planet-content2").removeClass("hide")
+                                $(".planet-slide-node ul li").eq(4).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 4:
+                                $(".planet-content3").removeClass("hide")
+                                $(".planet-slide-node ul li").eq(3).css("background","#fff").siblings().css("background","none");
+                                break;
+                            case 5:
+                                $(".planet-content4").removeClass("hide")
+                                $(".planet-slide-node ul li").eq(2).css("background","#fff").siblings().css("background","none");
+                                break;
+                        }
+                        break;
+                    }
+                }
+                // $(this).next("figure").find(".planet-content").removeClass("hide")
+            }
+            
+            
+            // let which = $(this).find("span").attr("class")
+            // console.log(which)
+            // for (i=1 ; i<=5 ; i++) {
+            //     let has = which.indexOf(i)
+            //     console.log(has)
+            //     if ( has>1 ) {
+            //         console.log("planet-content"+i)
+            //         break;
+            //     }
+            //     break;
+            // }
+            
+
+        })
+        $(".planet").each(function(){
+            let getClass = $(this).find("span").attr("class")
+            // console.log(getClass)s
+            
+            if (getClass.indexOf(whicPlanet)>1) {
+                $(this).find("span").addClass("hide")
+            }
+            // $(whicPlanet).addClass("hide")
+        })
+    })
+
+    $("#carousel").Cloud9Carousel( {
+        buttonLeft: $("#buttons > .left"),
+        buttonRight: $("#buttons > .right"),
+        autoPlay: 0,
+        bringToFront: true,
+    } );
+    
+    
+    // 下方slide滑動
+    $(".planet-slide-node ul li").on({
+        mouseenter : function() {
+            $(this).css("background","#fff").siblings().css("background","none");
+            let liIndex = $(this).index();
+            switch (liIndex) {
+                case 0:
+                    $("#carousel").data("carousel").goTo(liIndex);
+                    $(".planet-content").addClass("hide")
+                    $(".planet-content1").removeClass("hide")
+                    break;
+                case 1:
+                    $("#carousel").data("carousel").goTo(4);
+                    $(".planet-content").addClass("hide")
+                    $(".planet-content5").removeClass("hide")
+                    break;
+                case 2:
+                    $("#carousel").data("carousel").goTo(3);
+                    $(".planet-content").addClass("hide")
+                    $(".planet-content4").removeClass("hide")
+                    break;
+                case 3:
+                    $("#carousel").data("carousel").goTo(2);
+                    $(".planet-content").addClass("hide")
+                    $(".planet-content3").removeClass("hide")
+                    break;
+                case 4:
+                    $("#carousel").data("carousel").goTo(1);
+                    $(".planet-content").addClass("hide")
+                    $(".planet-content2").removeClass("hide")
+                    break;
+            }
+            $(this).addClass("active").siblings().removeClass("active");
+        }
+        // click : function() {
+        //     let liIndex = $(this).index();
+        //     switch (liIndex) {
+        //         case 0:
+        //             $("#carousel").data("carousel").goTo(liIndex);
+        //             break;
+        //         case 1:
+        //             $("#carousel").data("carousel").goTo(4);
+        //             break;
+        //         case 2:
+        //             $("#carousel").data("carousel").goTo(3);
+        //             break;
+        //         case 3:
+        //             $("#carousel").data("carousel").goTo(2);
+        //             break;
+        //         case 4:
+        //             $("#carousel").data("carousel").goTo(1);
+        //             break;
+        //     }
+        //     $(this).addClass("active").siblings().removeClass("active");
+        // }
+    })
+    </script>
+  </body>
+</html>

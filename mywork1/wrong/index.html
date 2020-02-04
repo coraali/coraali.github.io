@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My Planet</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a933b65614.js" crossorigin="anonymous"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: #111731;
+            font-family: 'Roboto','Noto Sans TC', sans-serif;
+        }
+        .wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .text-whith {
+            color: white;
+        }
+        .text-black {
+            color: black;
+        }
+        /*---------------header--------------------------*/
+        .header_bg {
+            height: 100vh;
+        }
+        .header_bg_cloud {
+            background: url(images/cloudy3.png) center center no-repeat;
+            background-size: cover;
+            width: 100%;
+            height: calc(100vw - 30%);
+            max-height: 80vh;
+        }
+        .logo {
+            margin: 0 auto;
+            max-width: 50%;
+        }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .rocky {
+            position: absolute;
+            bottom: 3%;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .rocky img {
+            width: 70%;
+        }
+        /*---------------nav--------------------------*/
+        .intro_bg {
+            background: url(images/BG-8.png) center center no-repeat;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+        }
+        nav {
+            background: rgba(0,0,0,.5);
+        }
+        nav .nav-link:hover {
+            background: #ffb68c;
+            color: #000;
+            font-weight: 600;
+        }
+        /*---------------planet--------------------------*/
+        .planet-wrapper {
+            height: 85vh;
+        }
+        .planet {
+            width: 15%;
+        }
+        #planetSlide .active {
+            position: absolute;
+            width: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .planet-slide-node ul {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+        .planet-slide-node li {
+            width: 10px;
+            height: 10px;
+            border: 1px solid #fff;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .planet-slide-node li.active {
+            background: white;
+        }
+        .left-button, .right-button {
+            color: white;
+            font-size: 1.5rem;
+            position: absolute;
+            cursor: pointer;
+        }
+        .left-button {
+            left: 30%;
+            /* position: relative; */
+        }
+        .right-button {
+            right: 30%;
+        }
+        .left-button::after {
+            content: "";
+            position: absolute;
+            width: 10vw;
+            height: 1px;
+            background: white;
+            top: 50%;
+        }
+        .right-button::after {
+            content: "";
+            position: absolute;
+            width: 10vw;
+            height: 1px;
+            background: white;
+            top: 50%;
+            left: -10vw;
+        }
+    </style>
+  </head>
+  <body>
+    <header>
+        <div class="header_bg ">
+            <div class="header_bg_cloud container-fluid">
+                <div class="row">
+                    <div class="logo">
+                        <img src="images/logo_bar-8.png" alt="logo">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="rocky">
+                        <img src="images/rocky.png" alt="rocky">
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </header>
+    <section  class="intro_bg">
+        <nav class="sticky-top">
+            <ul class="d-flex  list-unstyled justify-content-center">
+                <li ><a class="nav-link text-whith py-3 px-5" href="">星球介紹</a></li>
+                <li ><a class="nav-link text-whith py-3 px-5" href="test.html">星球測驗</a></li>
+                <li ><a class="nav-link text-whith py-3 px-5" href="page3.html">星球分佈</a></li>
+            </ul>
+        </nav>    
+        <div class=" container-fluid">
+            <div class="wrapper">
+                <div id="planetSlide" class="carousel d-flex justify-content-center align-items-center planet-wrapper">
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet1.svg" alt="Item #1">
+                    </div>
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet2.svg" alt="Item #2">
+                    </div>
+                    <div class="planet active cloud9-item carousel">
+                        <img src="images/planet3.svg" alt="Item #3">
+                    </div>
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet4.svg" alt="Item #4">
+                    </div>
+                    <div class="planet mx-5 cloud9-item carousel">
+                        <img src="images/planet1.svg" alt="Item #5">
+                    </div>
+                </div>
+                <div id="planetSlideNode" class="planet-slide-node">
+                    
+                    <ul class="d-flex justify-content-center align-items-center">
+                        <div class="left-button"><i class="fas fa-chevron-circle-left"></i></div>
+                        <li class="slide-left mx-2 "></li>
+                        <li class="mx-2"></li>
+                        <li class="mx-2 active"></li>
+                        <li class="mx-2"></li>
+                        <li class="slide-right mx-2"></li>
+                        <div class="right-button"><i class="fas fa-chevron-circle-right"></i></div>
+                    </ul>
+                    
+                </div>
+            </div>
+            
+        </div>
+        
+    </section>
+    
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="plug-in\cloud9carousel-master/jquery.cloud9carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+    
+    $("#carousel").Cloud9Carousel( {
+        buttonLeft: $("#buttons > .left"),
+        buttonRight: $("#buttons > .right"),
+        autoPlay: 1,
+        bringToFront: true
+    } );
+    </script>
+  </body>
+</html>

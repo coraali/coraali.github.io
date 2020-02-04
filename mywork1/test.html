@@ -1,0 +1,1366 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>My Planet - 星球測驗</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a933b65614.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: #111731;
+            font-family: 'Roboto','Noto Sans TC', sans-serif;
+        }
+        .wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+        .text-whith {
+            color: white;
+        }
+        .text-black {
+            color: black;
+        }
+        .text-red {
+            color: red;
+        }
+        .text-green {
+            color: green;
+        }
+        .drop-shadow-3px {
+            filter: drop-shadow(3px 3px 3px rgba(0,0,0,.7));
+        }
+        .object-fit-cover {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        .object-fit-contain {
+            object-fit: contain;
+            width: 100%;
+            height: 100%;
+        }
+        .show {
+            display: block;
+        }
+        .hide {
+            display: none;
+        }
+        .hide-opacity {
+            opacity: 0;
+        }
+        .transtion {
+            transition: .5s;
+        }
+        /*---------nav----------------------*/
+        .intro_bg {
+            background: url(images/BG-8.png) center center no-repeat;
+            width: 100%;
+            height: 100vh;
+            background-size: cover;
+        }
+        nav {
+            background: rgba(0,0,0,.5);
+        }
+        nav .active {
+            background: #ffb68c;
+            color: #000;
+            font-weight: 600;
+        }
+        nav .nav-link:hover {
+            background: #ffb68c;
+            color: #000;
+            font-weight: 600;
+        }
+        /*---------test-main-----------------------*/
+            /*---------背景設計-----------------------*/
+        .test-main {
+            position: relative;
+            overflow: hidden;
+            height: 95vh;
+        }
+        .test-cloudy {
+            width: 100vw;
+            height: 100vw;
+            position: absolute;
+            margin: 0;
+            z-index: -1;
+        }
+        .test-cloudy1 {
+            left: -25%;
+        }
+        .test-cloudy2 {
+            right: -25%;
+        }
+        .test-cloudy-ani-left {
+            animation-name: test-cloudy-ani-left;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-timing-function: linear;
+        }
+        .test-cloudy-ani-right {
+            animation-name: test-cloudy-ani-right;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-timing-function: linear;
+        }
+        @keyframes test-cloudy-ani-left {
+            from {
+                width: 100vw;
+                height: 100vh;
+                left: -25%;
+            }
+            to {
+                left: -50%;
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+        @keyframes test-cloudy-ani-right {
+            from {
+                width: 100%;
+                height: 100%;
+                right: -25%;
+            }
+            to {
+                right: -50%;
+                width: 100%;
+                height: 100%;
+            }
+        }
+                /*---------test-title-----------------------*/
+        .title-wrapper {
+            height: 10vh;
+        }
+        .title {
+            text-align: center;
+            position: relative;
+        }
+        .title h2 {
+            color: white;
+            position: relative;
+            display: inline;
+            padding: 20px 30px;
+        }
+        .title h2::before {
+            content: "";
+            border: 2px solid #963b74;
+            position: absolute;
+            left: -5px;
+            bottom: 5px;
+            right: 5px;
+            top: -5px;
+        }
+        .title h2::after {
+            content: "";
+            border: 2px solid #483165;
+            position: absolute;
+            left: 5px;
+            bottom: -5px;
+            right: -5px;
+            top: 5px;
+        }
+        .pen-rocky {
+            position: absolute;
+            right: -10px;
+            transform: rotate(45deg);
+            top: 10px;
+            width: 35px;
+            z-index: 2;
+        }
+                /*---------test-content-----------------------*/
+        .title-content-wrapper {
+            margin: 3.5rem auto;
+        }
+        .title-content{
+            color: white;
+        }
+        .title-content li {
+            display: inline-block;
+        }
+                /*---------test-start-----------------------*/
+        .test-start {
+            position: absolute;
+            bottom: 7vh;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .btn-test {
+            padding: 5px 20px;
+            color: white;
+            background: #bb6519;
+            border: 1px solid #bb6519;
+            position: relative;
+        }
+        .btn-test:hover {
+            box-shadow: 0px 0px 3px #fff;
+        }
+        .btn-test::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            bottom: -15px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 5px 10px 0 10px;
+            border-color: #bb6519 transparent transparent transparent;
+        }
+        /*---------全民星攻略-----------------------*/
+            /*---------背景設計-----------------------*/
+        .intelligence {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .int-cloudy {
+            width: 25%;
+            position: absolute;
+        }
+        .int-cloudy1 {
+            left: -100px;
+            top: 100px;
+            /* position: relative; */
+        }
+        .int-cloudy1::before {
+            content: "";
+            position: absolute;
+            height: 50vh;
+            width: 2px;
+            background: white;
+            left: 50%;
+            top: 20px;
+            z-index: -1;
+        }
+        .int-cloudy1::after {
+            content: url(images/star.png);
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            top: 50vh;
+            z-index: -1;
+            animation-name: starRoate;
+            animation-duration: 4s;
+            animation-timing-function:linear;
+            -webkit-animation-timing-function:linear;
+            animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+        }
+        .int-cloudy2 {
+            right: -100px;
+            bottom: 50px;
+        }
+        @keyframes starRoate {
+            from {
+                transform: translate(-50%) rotate(0deg) ;
+            }
+            to {
+                transform: translate(-50%) rotate(360deg) ;
+            }
+        }
+            /*---------標題-----------------------*/
+        .intelligence-wrapper {
+            height: 20vh;
+        }
+        .intelligence-title {
+            position: relative;
+            display: inline;
+            margin: 0;
+        }
+        .pen-rocky-content {
+            position: absolute;
+            transform: rotate(-90deg);
+            width: 20px;
+            left: -50px;
+            top: -14px;
+        }
+            /*---------slide-----------------------*/
+        .step-slide {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+        .setp-slide-node li {
+            height: 35px;
+        }
+        .setp-slide-node li.active {
+            height: 70px;
+            filter: drop-shadow(0 1px 5px rgba(0,0,0,1));
+        }
+        .step {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            color: white;
+        }
+            /*---------內容-----------------------*/
+        .int-content-wrapper figure{
+            width: 15vw;
+            height: 15vh;
+            max-width: 150px;
+            margin: 0 4vw;
+            position: relative;
+        }
+        .button-int-alt {
+            position: absolute;
+            color: black;
+            font-size: 1.5rem;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50% , -50%);
+            cursor: pointer;
+        }
+        .button-next {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            bottom: 20px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 15px 0 15px;
+            border-color: #bb6519 transparent transparent transparent;
+            cursor: pointer;
+        }
+        .button-ani {
+            animation-name: animation-wating;
+            animation-duration: 2s;
+            animation-timing-function:linear;
+            -webkit-animation-timing-function:linear;
+            animation-iteration-count: infinite;
+            -webkit-animation-iteration-count: infinite;
+        }
+        @keyframes animation-wating{
+            0% {
+                border-color: #bb6519 transparent transparent transparent;
+                /* border-width: 10px 15px 0 15px; */
+            }
+            50% {
+                border-color: #FFB68C transparent transparent transparent;
+                /* border-width: 15px 20px 0 20px; */
+            }
+            100% {
+                border-color: #FE6787 transparent transparent transparent;
+                /* border-width: 10px 15px 0 15px; */
+            }
+        }
+            /*---------題目-----------------------*/
+        .int-subject {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50% , -50%);
+        }
+        .int-subject-content {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50% , -50%);
+            z-index: 5;  
+        }
+        .int-subject-content-title {
+            font-size: 0rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        .int-subject-content-text li {
+            font-size: 0rem;
+            cursor: pointer;
+        }
+        .int-subject-content-text li:hover {
+            background: #FF6889;
+        }
+        .int-subject-wrapper figure{
+            width: 50vw;
+            height: 60vh;
+            max-width: 600px;
+            margin-top: 8vh;
+            max-width: 500px;
+            margin-top: 8vh;
+        }
+        .int-subject-ani {
+            animation-name: animation-int;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+        .int-subject-ani-rev {
+            animation-name: animation-int-rev;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+        }
+        .int-subject-title-ani {
+            animation-name: animation-text;
+            animation-duration: 1s;
+            animation-delay: .5s;
+            animation-fill-mode: forwards;
+        }
+        .int-subject-text-ani {
+            animation-name: animation-text2;
+            animation-duration: 1s;
+            animation-delay: .5s;
+            animation-fill-mode: forwards;
+        }
+        @keyframes animation-int{
+            from {
+                width: 0;
+                height: 0;  
+            }
+            to {
+                width: 50vw;
+                height: 60vh;
+            }
+        }
+        @keyframes animation-int-rev{
+            from {
+                width: 50vw;
+                height: 60vh;
+            }
+            to {
+                width: 0;
+                height: 0;
+            }
+        }
+        @keyframes animation-text{
+            from {
+                font-size: .1rem;
+            }
+            to {
+                font-size: 1.3rem;
+            }
+        }
+        @keyframes animation-text2{
+            from {
+                font-size: .1rem;
+            }
+            to {
+                font-size: 1rem;
+            }
+        }
+        .return {
+            position: absolute;
+            bottom: -40px;
+            left: 50%;
+            transform: translate(-50%);
+            cursor: pointer;
+        }
+        /*---------寶藏在哪裡-----------------------*/
+            /*---------背景設計-----------------------*/
+        .treasure {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .tre-cloudy {
+            position: absolute;
+        }
+        .tre-cloudy1 {
+            width: 30%;
+            max-width: 500px;
+            left: 0;
+            top: 10%
+        }
+        .tre-cloudy2 {
+            width: 40%;
+            max-width: 400px;
+            left: -5%;
+            bottom: 5%
+        }
+        .tre-cloudy3 {
+            max-width: 400px;
+            width: 30%;
+            right: 0;
+            top: 10%
+        }
+        .tre-cloudy4 {
+            max-width: 400px;
+            width: 40%;
+            right: -5%;
+            bottom: 1%;
+        }
+            /*---------標題-----------------------*/
+        .treasure-wrapper {
+            height: 20vh;
+        }
+        .treasure-title {
+            position: relative;
+            display: inline;
+            margin: 0;
+        }
+        .pen-rocky-content {
+            position: absolute;
+            transform: rotate(-90deg);
+            width: 20px;
+            left: -50px;
+            top: -14px;
+        }
+            /*---------內容-----------------------*/
+        .treasure-content {
+            margin: 15vh auto;
+        }
+        .treasure-content-wrapper figure{
+            width: 20vw;
+            height: 30vh;
+            max-width: 300px;
+            /* margin: 0 4vw; */
+        }
+        .card{
+            position: relative;
+            transform-style:preserve-3d;
+            /* float:left;
+            margin: 0 20px 20px;
+            width:200px;
+            height:280px;  */
+            /*height:400px;*/
+            background: none;
+            border: none;
+        }
+        .card.active{
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+        .card img{
+            width:100%;
+            position: absolute;
+            left:0;
+            top:0;
+            display: block;
+            -webkit-backface-visibility: hidden;  
+            backface-visibility: hidden;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .front{
+            transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+        }
+        /*---------你說我美嗎-----------------------*/
+                /*---------背景設計-----------------------*/
+        .beauty {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .bea-cloudy {
+            position: absolute;
+        }
+        .bea-cloudy2 {
+            width: 30%;
+            max-width: 300px;
+            right: 5%;
+            bottom: 10%;
+        }
+        .bea-cloudy1 {
+            width: 40%;
+            max-width: 500px;
+            left: -5%;
+            bottom: 5%;
+        }
+        .bea-cloudy3 {
+            max-width: 400px;
+            width: 30%;
+            right: 0;
+            top: 10%;
+        }
+        .bea-moon {
+            max-width: 130px;
+            width: 25%;
+            left: 150px;
+            top: 73%;
+            filter: drop-shadow(1px 1px 2px #000);
+            z-index: -1;
+        }
+        .bea-star {
+            max-width: 300px;
+            width: 30%;
+            left: 80px;
+            top: 5%;
+            filter: drop-shadow(1px 1px 1px #000);
+        }
+        .moon-up-ani {
+            animation: animation-moonup 2s linear forwards;
+        }
+        @keyframes animation-moonup{
+            from {
+                top: 73%;
+            }
+            to {
+                top: 5%;
+            }
+        }
+            /*---------標題-----------------------*/
+        .beauty-wrapper {
+            height: 20vh;
+        }
+        .beauty-title {
+            position: relative;
+            display: inline;
+            margin: 0;
+        }
+        .pen-rocky-content {
+            position: absolute;
+            transform: rotate(-90deg);
+            width: 20px;
+            left: -50px;
+            top: -14px;
+        }
+            /*---------上傳區-----------------------*/
+        .beauty-photo {
+            margin: 5vh 0;
+            position: relative;
+        }
+        .beauty-photo .Beauty-Photo-bg{
+            width: 45vw;
+            height: 60vh;
+            max-width: 450px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .Beauty-Photo-upload {
+            position: absolute;
+            /* width: 45vw;
+            height: calc(45vw + 50px);
+            max-width: 450px;
+            max-height: 530px;
+            left: 50%;
+            top: 50%; */
+            /* width: 55%; */
+            left: 0;
+            right: 0;
+            top: 1%;
+            bottom: 1%;
+            /* transform: translate(-50%, -50%); */
+            z-index: -1;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 0 auto;
+            filter: brightness(20%);
+        }
+        .input-hide {
+            display: none;
+        }
+        .upload_cover {
+            cursor: pointer;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50% , -50%);
+            z-index: 5;
+        }
+        .upload_cover:hover i{
+            color: black;
+        }
+            /*---------掃描-----------------------*/
+        .scan {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .scan figure {
+            max-width: 80px;
+            max-height: 80px;
+            width: 8vw;
+            height: 8vw;
+            cursor: pointer;
+        }
+        .scan figure img {
+            clip-path: circle(50% at 50% 50%);
+        }
+        .scan figure:hover img {
+            filter: brightness(0);
+            clip-path: circle(50% at 50% 50%);
+        }
+        .scan-end {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translate(-50%);
+            color: white;
+            font-size: 1.2rem;
+        }
+        .scan-end span {
+            font-size: 2rem;
+        }
+        /*---------結果-----------------------*/
+        .test-end {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .end-cloudy {
+            width: 100vw;
+            height: 100vw;
+            position: absolute;
+            margin: 0;
+            z-index: -1;
+        }
+        .end-cloudy1 {
+            left: -25%;
+        }
+        .end-cloudy2 {
+            right: -25%;
+        }
+        .end-cloudy-ani-left {
+            animation-name: test-cloudy-ani-left;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-timing-function: linear;
+        }
+        .end-cloudy-ani-right {
+            animation-name: test-cloudy-ani-right;
+            animation-duration: 2s;
+            animation-fill-mode: forwards;
+            animation-timing-function: linear;
+        }
+            /*---------標題-----------------------*/
+        .test-end .title-wrapper {
+            height: 22vh;
+        }
+            /*---------內文-----------------------*/
+        .test-end-content-wrapper {
+            height: 68vh;
+            margin-top: 10vh;
+        }
+        .test-end-content-bg {
+            width: 70vw;
+            max-width: 800px;
+            position: relative;
+        }
+        .end-planet {
+            position: absolute;
+            width: 60%;
+            left: -8%;
+            top: 50%;
+            transform: translate(0 , -50%);
+        }
+        /* .test-end-content-bg::after {
+            content: url(images/planet1.svg);
+            width: 25vw;
+            max-width: 300px;
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            transform: translate(0 , -50%);
+        } */
+        .test-end-content-text {
+            width: 50%;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translate(0 , -50%);
+        }
+        .test-end-content-text h4 {
+            font-weight: 600;
+            text-align: center;
+            font-size: 1.7rem;
+        }
+        .test-end-content-text span {
+            font-size: .9rem;
+        }
+    </style>
+  </head>
+  <body>
+        <!-- -------------nav------------------------- -->
+        <nav class="sticky-top">
+            <ul class="d-flex  list-unstyled justify-content-center">
+                <li ><a class="nav-link text-whith py-3 px-5" href="index.html">星球介紹</a></li>
+                <li ><a class="nav-link active text-whith py-3 px-5" href="">星球測驗</a></li>
+                <li ><a class="nav-link text-whith py-3 px-5" href="page3.html">星球分佈</a></li>
+            </ul>
+        </nav>
+        <!-- -------------星球測驗首頁------------------------- -->
+        <section id="testHome" class="test-main">
+            <figure class="test-cloudy test-cloudy1 test-cloudy-ani-left">
+                <img class="object-fit-contain" src="images/cloudy/more-cloudy2.png" alt="">
+            </figure>
+            <figure class="test-cloudy test-cloudy2 test-cloudy-ani-right">
+                <img class="object-fit-contain" src="images/cloudy/more-cloudy1.png" alt="">
+            </figure>
+            <div class="title-wrapper d-flex justify-content-center align-items-end">
+                <div class="title">
+                    <h2>你來自哪顆星
+                        <figure class="pen-rocky">
+                            <img class="drop-shadow-3px object-fit-contain" src="images/pen-rocky.png" alt="">
+                        </figure>
+                    </h2>
+                </div>
+            </div>
+            <div class="title-content-wrapper d-flex justify-content-center">
+                <div class="title-content">
+                    <p>根據以下三個測驗，測試看看你來自哪顆星吧！</p>
+                    <ul class="list-unstyled d-flex flex-column align-items-center">
+                        <li class="py-2">— 智力 —</li>
+                        <li class="py-2">— 運氣 —</li>
+                        <li class="py-2">— 顏值 —</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="test-start">
+                <button id="testStart" type="button" class="btn-test transtion">
+                    開始測驗
+                </button>
+            </div>
+        </section>
+        <!-- -------------星球測驗-全民星攻略------------------------- -->
+        <section id="testInt" class="intelligence hide">
+            <figure class="animated hide int-cloudy int-cloudy1">
+                <img class="object-fit-contain" src="images/cloudy/cloudy-1.png" alt="">
+            </figure>
+            <figure class="animated hide int-cloudy int-cloudy2">
+                <img class="object-fit-contain" src="images/cloudy/cloudy-2.png" alt="">
+            </figure>
+            <div class="intelligence-wrapper d-flex justify-content-center align-items-end">
+                <div class="intelligence-title text-whith">
+                    <h3>全民星攻略
+                        <figure class="pen-rocky-content">
+                            <img class="drop-shadow-3px object-fit-contain" src="images/pen-rocky.png" alt="">
+                        </figure>
+                    </h3>
+                </div>
+            </div>
+            <div class="step-slide">
+                <ul class="setp-slide-node d-flex flex-column list-unstyled mx-5">
+                    <li class="my-3 active"><img class="object-fit-contain" src="images/slide-setp.png" alt=""><span class="step">Step 1</span></li>
+                    <li class="my-3"><img class="object-fit-contain" src="images/slide-setp.png" alt=""></li>
+                    <li class="my-3"><img class="object-fit-contain" src="images/slide-setp.png" alt=""></li>
+                </ul>
+            </div>
+            <div class="int-subject hide">
+                <div class="int-subject-wrapper d-flex justify-content-center">
+                    <figure class="int-subject-figure">
+                        <img class="object-fit-contain" src="images/intelligence-big.png" alt="">
+                        <div class="int-subject-content">
+                            <!-- <span class="int-subject-content-title my-5 int-subject-title-ani">請問，曹植是曹操的？</span>
+                            <ol class="int-subject-content-text list-unstyled text-center ">
+                                <li class="int-subject-text-ani">一、第一子</li>
+                                <li class="int-subject-text-ani">二、第二子</li>
+                                <li class="int-subject-text-ani">三、第三子</li>
+                            </ol> -->
+                            <!-- <div class="yesORno">
+                                <div id="yes">
+
+                                </div>
+                                <i class="fas fa-check hide"></i>
+                                <i class="fas fa-times hide"></i>
+                            </div> -->
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <div class="int-content transtion">
+                <div class="int-content-wrapper d-flex justify-content-center my-5">
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">歷史</span>
+                        <!-- <span class="button-int-alt">
+                            <i class="fas fa-times fa-3x text-red"></i>
+                        </span> -->
+                    </figure>
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">地理</span>
+                    </figure>
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">電腦</span>
+                    </figure>
+                </div>
+                <div class="int-content-wrapper d-flex justify-content-center mb-5">
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">天文</span>
+                    </figure>
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">體育</span>
+                    </figure>
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">文學</span>
+                    </figure>
+                </div>
+                <div class="int-content-wrapper d-flex justify-content-center">
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">音樂</span>
+                    </figure>
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">動漫</span>
+                    </figure>
+                    <figure class="button-int-title">
+                        <img class="object-fit-contain" src="images/intelligence-small.png" alt="">
+                        <span class="button-int-alt">自然</span>
+                    </figure>
+                </div>
+            </div>
+            <div id="intNext" class="next hide">
+                <div id="buttonInt" class="button-next button-ani"></div>
+            </div>
+        </section>
+        <!-- -------------星球測驗-寶藏在哪裡------------------------- -->
+        <div id="testTre" class="treasure hide">
+            <figure class="animated hide tre-cloudy tre-cloudy1">
+                <img class="object-fit-contain" src="images/cloudy/cloudy4.png" alt="">
+            </figure>
+            <figure class="animated hide tre-cloudy tre-cloudy2">
+                <img class="object-fit-contain" src="images/cloudy/cloudy5.png" alt="">
+            </figure>
+            <figure class="animated hide tre-cloudy tre-cloudy3">
+                <img class="object-fit-contain" src="images/cloudy/cloudy6.png" alt="">
+            </figure>
+            <figure class="animated hide tre-cloudy tre-cloudy4">
+                <img class="object-fit-contain" src="images/cloudy/cloudy8.png" alt="">
+            </figure>
+            <div class="treasure-wrapper d-flex justify-content-center align-items-end">
+                <div class="treasure-title text-whith">
+                    <h3>寶藏在哪裡
+                        <figure class="pen-rocky-content">
+                            <img class="drop-shadow-3px object-fit-contain" src="images/pen-rocky.png" alt="">
+                        </figure>
+                    </h3>
+                </div>
+            </div>
+            <div class="step-slide">
+                <ul class="setp-slide-node d-flex flex-column list-unstyled mx-5">
+                    <li class="my-3 "><img class="object-fit-contain" src="images/slide-setp.png" alt=""></li>
+                    <li class="my-3 active"><img class="object-fit-contain" src="images/slide-setp.png" alt=""><span class="step">Step 2</span></li>
+                    <li class="my-3"><img class="object-fit-contain" src="images/slide-setp.png" alt=""></li>
+                </ul>
+            </div>
+            <div class="treasure-content">
+                <div class="treasure-content-wrapper d-flex justify-content-center">
+                    <div class="card transtion">
+                        <figure>
+                            <img class="object-fit-contain" src="images/money.png" alt="">
+                        </figure>
+                    </div>
+                    <div class="card transtion">
+                        <figure>
+                            <img class="object-fit-contain" src="images/money.png" alt="">
+                        </figure>
+                    </div>
+                    <div class="card transtion">
+                        <figure>
+                            <img class="object-fit-contain" src="images/money.png" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div id="treNext" class="next hide">
+                <div id="buttonTre" class="button-next button-ani"></div>
+            </div>
+        </div>
+        <!-- -------------星球測驗-你說我美嗎------------------------- -->
+        <div id="testBea" class="beauty hide">
+            <figure class="animated  bea-cloudy bea-cloudy1">
+                <img class="object-fit-contain" src="images/cloudy/cloudy-1.png" alt="">
+            </figure>
+            <figure class="animated  bea-cloudy bea-cloudy2">
+                <img class="object-fit-contain" src="images/cloudy/cloudy3.png" alt="">
+            </figure>
+            <figure class="animated  bea-cloudy bea-cloudy3">
+                <img class="object-fit-contain" src="images/cloudy/cloudy7.png" alt="">
+            </figure>
+            <figure class="animated  bea-cloudy bea-moon">
+                <img class="object-fit-contain" src="images/cloudy/moon.png" alt="">
+            </figure>
+            <figure class="animated  bea-cloudy bea-star">
+                <img class="object-fit-contain" src="images/cloudy/star_1.png" alt="">
+            </figure>
+            <div class="beauty-wrapper d-flex justify-content-center align-items-end">
+                <div class="beauty-title text-whith">
+                    <h3>你說我美嗎
+                        <figure class="pen-rocky-content">
+                            <img class="drop-shadow-3px object-fit-contain" src="images/pen-rocky.png" alt="">
+                        </figure>
+                    </h3>
+                </div>
+            </div>
+            <div class="step-slide">
+                <ul class="setp-slide-node d-flex flex-column list-unstyled mx-5">
+                    <li class="my-3 "><img class="object-fit-contain" src="images/slide-setp.png" alt=""></li>
+                    <li class="my-3"><img class="object-fit-contain" src="images/slide-setp.png" alt=""></li>
+                    <li class="my-3 active"><img class="object-fit-contain" src="images/slide-setp.png" alt=""><span class="step">Step 3</span></li>
+                </ul>
+            </div>
+            <div class="beauty-content">
+                <div class="beauty-photo">
+                    <form runat="server">
+                        <label class="upload_cover">
+                            <input type="file" class="input-hide" accept="image/gif, image/jpeg, image/png" id="beautyUpload" />
+                            <i class="fas fa-5x fa-arrow-circle-up text-whith transtion"></i>
+                        </label>
+                        <figure class="Beauty-Photo-bg">
+                            <img id="changeBeautybg" class="object-fit-contain" src="images/photo.png">
+                            <figure class="Beauty-Photo-upload">
+                                <img id="changeBeautyphoto" class="beauty-upload-photo object-fit-cover" src="">
+                            </figure>
+                            <div id="buttonScan" class="scan hide">
+                                <figure>
+                                    <img class="object-fit-cover transtion" src="images/face-scan-white.png" alt="">
+                                </figure>
+                            </div>
+                            <div id="scanEnd" class="scan-end hide">
+                                顏值指數：<span class="text-red"></span>
+                            </div>
+                        </figure>
+                        
+                    </form>
+                </div>
+            </div>
+            <div id="beaNext" class="next hide">
+                <div id="buttonBea" class="button-next button-ani"></div>
+            </div>
+        </div>
+        <!-- -------------星球測驗-結果------------------------- -->
+        <div id="testEnd" class="test-end hide">
+            <figure class="end-cloudy end-cloudy1">
+                <img class="object-fit-contain" src="images/cloudy/more-cloudy2.png" alt="">
+            </figure>
+            <figure class="end-cloudy end-cloudy2">
+                <img class="object-fit-contain" src="images/cloudy/more-cloudy1.png" alt="">
+            </figure>
+            <div class="title-wrapper d-flex justify-content-center align-items-end">
+                <div class="title">
+                    <h2>你來自……
+                        <figure class="pen-rocky">
+                            <img class="drop-shadow-3px object-fit-contain" src="images/pen-rocky.png" alt="">
+                        </figure>
+                    </h2>
+                </div>
+            </div>
+            <div class="test-end-content">
+                <div class="test-end-content-wrapper d-flex justify-content-center align-items-start">
+                    <figure class="test-end-content-bg">
+                        <figure id="endPlanet" class="end-planet">
+                            <img class="object-fit-contain" src="images/planet2.png" alt="">
+                        </figure>
+                        <img id="endPic" class="object-fit-contain" src="images/test-end.png" alt="">
+                        <div class="test-end-content-text px-3">
+                            <h4>呆呆獸行星</h4>
+                            <span>呆呆獸行星（英語: Yadonn，以呆呆獸的叫聲命名）。<br>
+                                呆呆獸行星為呆呆獸的主要棲息地，行星上呆呆獸占全星球生物的百分之八十。氣候舒適，氣溫終年維持在20至30°C之間。星球中海洋面積占百分之七十，適合水系的呆呆獸棲息。
+                                星球特色為其海洋顏色，是呆呆獸粉，是由於終年有呆呆獸泡在海中所形成。
+                            </span>
+                        </div>
+                    </figure>
+                    
+                </div>
+                
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script>
+    let planet = ['images/planet1.png','images/planet2.png','images/planet3.png','images/planet4.png','images/planet5.png']
+    let planetTitle = ['火燒的寂寞','呆呆獸行星','青春的疤痕','少女的矛盾','幼基拉星']
+    let planetContent = [
+        '火燒的寂寞（英語: Fire Lonely）。<br>整歌星球呈現火紅色，並且有強烈迴旋氣流，使星球出現一圈圈紅色氣流，星球因高溫生物難以生存，而少數生物因為沒有同伴，寂寞如同火燒一樣。',
+        '呆呆獸行星（英語: Yadonn，以呆呆獸的叫聲命名）。<br>呆呆獸行星為呆呆獸的主要棲息地，行星上呆呆獸占全星球生物的百分之八十。氣候舒適，氣溫終年維持在20至30°C之間。星球中海洋面積占百分之七十，適合水系的呆呆獸棲息。星球特色為其海洋顏色，是呆呆獸粉，是由於終年有呆呆獸泡在海中所形成。',
+        '青春的疤痕（英語: Young）。<br>因沒有大氣層保護，導致許多彗星撞擊，造成許多隕石坑，整顆星球坑坑疤疤，猶如你我青春時期，留下的疤痕。有人說，青春是打開了就合不上的書。長大，好像就是必須不斷的丟棄又不斷的拾起。雖然我們不能阻止青春的流逝，卻可以將這本青春的書活成自己。',
+        '少女的矛盾（英語: Teenage girl）。<br>最適合居住的星球，成分組成與地球差不多，上面住了許多少女，因為星球自轉非常慢，所以時間流動的也慢，少女可維持長久青春、長壽，而星球如同少女喜歡藍色，但內心又嚮往粉紅，矛盾！',
+        '幼基拉星（英語: Larvitar）。<br>幼基拉星為幼基拉的主要棲息地，行星上佈滿著灰綠色岩石。行星上遍布洞窟和山嶽地帶，星球表面寒冷，幼基拉大部分藏於地下深處，以星球泥石為食。星球中紅色凹陷地帶通往核心，炎熱高達1000萬度。'
+    ]
+    let planetLength = planet.length
+    let planetTitleLength = planetTitle.length
+
+    // 測驗完成後點擊出現，並滾動
+        /* 寫法如下:
+        $(‘#按鈕名稱‘).click(function(){
+        $(‘html,body’).animate({scrollTop:$(‘#指定區塊塊名稱‘).offset().top}, 速度);
+        });*/
+
+        // 開始測驗->全民星攻略
+        $("#testStart").click(function(){
+            $(".intelligence").removeClass("hide")
+            $("html,body").animate({scrollTop:$("#testInt").offset().top}, 800);
+        });
+        // 全民星攻略->寶藏在哪裡
+        $("#buttonInt").click(function(){
+            $(".treasure").removeClass("hide")
+            $("html,body").animate({scrollTop:$("#testTre").offset().top}, 800);
+        });
+        // 寶藏在哪裡->你說我美嗎
+        $("#buttonTre").click(function(){
+            $(".beauty").removeClass("hide")
+            $("html,body").animate({scrollTop:$("#testBea").offset().top}, 800);
+        });
+        // 你說我美嗎->結果
+        $("#buttonBea").click(function(){
+            $(".test-end").removeClass("hide")
+            $("html,body").animate({scrollTop:$("#testEnd").offset().top}, 800);
+            getPlanet()
+        });
+        
+        // 捲動後背景動畫
+        $(window).scroll(function(){
+            let whicScroll = $(this).scrollTop()
+            let intScroll = Math.floor($("#testInt").offset().top)
+            let treScroll = Math.floor($("#testTre").offset().top)
+            let beaScroll = Math.floor($("#testBea").offset().top)
+            let endScroll = Math.floor($("#testEnd").offset().top)
+
+            if (intScroll >= whicScroll) {
+                $(".int-cloudy1").removeClass("hide").addClass("slideInLeft")
+                $(".int-cloudy2").removeClass("hide").addClass("slideInRight")
+            }
+            else if(treScroll >= whicScroll) {
+                $(".tre-cloudy1").removeClass("hide").addClass("slideInDown")
+                $(".tre-cloudy2").removeClass("hide").addClass("slideInUp")
+                $(".tre-cloudy3").removeClass("hide").addClass("slideInDown")
+                $(".tre-cloudy4").removeClass("hide").addClass("slideInUp")
+            }
+            else if(beaScroll >= whicScroll) {
+                $(".bea-moon").addClass("moon-up-ani")
+                $(".bea-star").addClass("swing delay-2s infinite")
+            }
+            else if(endScroll >= whicScroll) {
+                $(".end-cloudy1").addClass("end-cloudy-ani-left")
+                $(".end-cloudy2").addClass("end-cloudy-ani-right")
+            }
+        })
+
+        // $(window).scroll(function(){
+        //     let testNum = $("#testInt").offset().top
+        //     console.log(testNum)
+        // })
+
+    // 星球測驗-全民星攻略
+        // 點擊主題出現題目
+            // 陣列儲存主題
+        let intSubject = ['歷史','地理','電腦','天文','體育','文學','音樂','動漫','自然']
+        let intSubjectLength = intSubject.length
+
+            // 陣列儲存題目
+        let intSubjectTitle = [
+            '請問，曹植是曹操的？','請問，玉米原產自哪裡？','第一台計算機式哪國人發明的？',
+            '請問，牛郎星位於哪個星座？','請問，奧運會每幾年舉辦一次？','傳說中的后羿射日時的人類首領是？',
+            '有「小提琴之王」之稱的作曲家是？','超夢是用夢幻哪個部位的基因複製的？','貓為什麼會嘔吐？'
+        ]
+            // 陣列儲存項目
+        let intSubjectContent = []
+        intSubjectContent[0] = ['第一子','第三子','第二子']
+        intSubjectContent[1] = ['美國','印度','巴西']
+        intSubjectContent[2] = ['中國人','英國人','美國人']
+        intSubjectContent[3] = ['天琴座','仙女座','天鷹座']
+        intSubjectContent[4] = ['兩年','四年','六年']
+        intSubjectContent[5] = ['堯','舜','禹',]
+        intSubjectContent[6] = ['帕格尼尼','海頓','莫扎特',]
+        intSubjectContent[7] = ['眉毛','眼淚','睫毛']
+        intSubjectContent[8] = ['吃下去的東西不消化','胃裡的毛太多了','生病了']
+        
+        let whichintSubject=0;
+        let intCount = 0 // 判斷點了幾次題目
+            // 當主題被選中時，跟主題陣列比較是否一樣，一樣就把html碼丟進去，匹配正確題目、選項
+        $(".button-int-title").click(function(){
+            intCount++ // 每點一次題目就+1
+            let whicIntSubjet = $(this).find("span.button-int-alt").text()
+            $(this).css("pointer-events","none") //禁止主題點擊事件
+            for (i=0 ; i<intSubjectLength ; i++) {
+                if (whicIntSubjet == intSubject[i]) {
+                    whichintSubject = i;
+                    let intSubjectHtml = `
+                        <span class="int-subject-content-title my-5 int-subject-title-ani text-center">${intSubjectTitle[i]}</span>
+                            <ol class="int-subject-content-text list-unstyled text-center ">
+                                <li class="int-subject-text-ani">${intSubjectContent[i][0]}</li>
+                                <li class="int-subject-text-ani">${intSubjectContent[i][1]}</li>
+                                <li class="int-subject-text-ani">${intSubjectContent[i][2]}</li>
+                            </ol>
+                            <div class="yesORno text-center">
+                                <div id="yes" class="hide yesORnoDiv">
+                                    <i class="fas fa-check fa-3x text-green"></i>
+                                </div>
+                                <div id="no" class="hide yesORnoDiv">
+                                    <i class="fas fa-times fa-3x text-red"></i>
+                                </div>
+                            </div>
+                            <div id="return" class="return text-center hide">
+                                <i class="fas fa-undo  fa-1x text-white"></i>
+                            </div>
+                    `
+                    $(".int-subject-content").html(intSubjectHtml)
+                }
+            }
+            $(".int-content").addClass("hide")
+            $(".int-subject").removeClass("hide")
+            $(".int-subject").find("figure").addClass("int-subject-ani").removeClass("int-subject-ani-rev")
+            $(".button-int-alt").addClass("hide")
+        })
+
+            // 確認使用者達對或錯，反饋對錯，並出現返回鍵
+            // 回答過的問題無法再點擊，並回饋是答對或答錯
+        let intAnwser = ['第三子','巴西','美國人','天鷹座','四年','堯','帕格尼尼','睫毛','胃裡的毛太多了']
+
+        let intCorrect = `<span class="button-int-alt">
+                            <i class="fas fa-check fa-3x text-green"></i>
+                        </span>`
+        let intWrong = `<span class="button-int-alt">
+                            <i class="fas fa-times fa-3x text-red"></i>
+                        </span>`
+        
+        $(".int-subject-content").on("click","li",function(){
+            let userChoice = $(this).html()
+            for (i=0 ; i<intAnwser.length ; i++) {
+                if (userChoice == intAnwser[i]) {
+                    $("div#yes").toggleClass("hide")
+                    $(".button-int-title span.button-int-alt").each(function(){
+                        let spanAlt=$(this).text()
+                        if (spanAlt == intSubject[whichintSubject]) {
+                            $(this).closest("figure.button-int-title").append(intCorrect)
+                        }
+                    })
+                }
+                else {
+                    $("div#no").toggleClass("hide")
+                    // 點擊正確答案時依安然會出現打叉，先跳過
+                    // $(".button-int-title span.button-int-alt").each(function(){
+                    //     let spanAlt=$(this).text()
+                    //     if (spanAlt == intSubject[whichintSubject]) {
+                    //         $(this).closest("figure.button-int-title").append(intCorrect)
+                    //     }
+                    // })
+                }
+            }
+            $(".int-subject-content li").css("pointer-events","none") //禁止選項點擊事件
+            $(".return").removeClass("hide")
+
+            // 當使用者選擇完選項時，判斷題目是否都點過了，是的話出現next
+            if (intCount == 9) {
+                $("#intNext").removeClass("hide")
+            }
+        })
+
+            // 點擊返回鍵，回到主題頁面
+        $(".int-subject-content").on("click","#return",function(){
+            $(".int-subject-figure").removeClass("int-subject-ani").addClass("int-subject-ani-rev")
+            $(".int-subject-content").html("")
+            $(".int-content").removeClass("hide")
+            $(".button-int-alt").removeClass("hide")
+        })
+        
+        
+
+    // 星球測驗-寶藏在哪裡
+        let openTreasure = ['open_money1.png','open_money2.png','open_money3.png']
+        let openTreasureLength = openTreasure.length
+
+        $(".card").click(function(){
+            let count=$(".card.active").length
+            if (count>0){
+            }
+            else {
+                let numberOpenTreasure=getOpenTreasure(openTreasureLength)
+                let whicOpenTreasure=openTreasure[numberOpenTreasure]
+                let openTreasureHtml= `<img class="front object-fit-contain" src="images/${whicOpenTreasure}" alt="">`
+                $(this).addClass("active")
+                $(this).find("figure").append(openTreasureHtml)
+            }
+            $("#treNext").removeClass("hide")
+
+        })
+        function getOpenTreasure(x) {
+            return Math.floor(Math.random()*x);
+            //Math.floor 是無條件捨去小數點
+        }
+
+    // 星球測驗-你說我美嗎
+        // 照片上傳並預覽功能
+
+        // 當input偵測到change時呼叫readURL()函式
+        $("#beautyUpload").change(function(){
+            readURL(this);
+        });
+        function readURL(input){
+            //判斷當input有檔案，並且只有一個檔案(因為input檔案是可以複數的，所以是陣列)
+            if(input.files && input.files[0]){
+                // FileReader是jQuery內建函式，可讀取input的檔案
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#changeBeautyphoto").attr('src', e.target.result);
+                    $(".Beauty-Photo-upload").css("z-index", "0");
+                    $(".scan").removeClass("hide")
+                    // $("#changeBeautyphoto").attr('src', e.target.result);
+                }
+                reader.readAsDataURL(input.files[0]);
+                // $("#changeBeautybg").attr("src","images/photo-frame.png")   
+            }
+        }
+
+        // 點擊掃描後彈出確認視窗
+        $("#buttonScan").click(function(){
+            let timerInterval
+            Swal.fire({
+                title: '顏值分析中...',
+                html: '進度.... <b></b> 秒',
+                timer: 1000,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                    Swal.getContent().querySelector('b')
+                        .textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                onClose: () => {
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        showConfirmButton: false,
+                        timer: 1000
+                    })
+                    Toast.fire({
+                        icon: 'success',
+                        title: '掃描完成'
+                    })
+                    clearInterval(timerInterval)
+                }
+                }).then((result) => {
+                if (
+                    /* Read more about handling dismissals below */
+                    result.dismiss === Swal.DismissReason.timer
+                ) {
+                    console.log('I was closed by the timer')
+                    $(".scan").addClass("hide")
+                    $("#scanEnd").removeClass("hide")
+                    let Number = getOpenTreasure(100)
+                    $("#scanEnd span").text(Number)
+                    $("#beaNext").removeClass("hide")
+                }
+            })
+        })
+    // 結果
+    function getPlanet(){
+        let planetNumber = getOpenTreasure(planetLength)
+        $("#endPlanet img").attr("src",planet[planetNumber])
+        $(".test-end-content-text h4").text(planetTitle[planetNumber])
+        $(".test-end-content-text span").html(planetContent[planetNumber])
+
+    }
+    
+    </script>
+  </body>
+</html>
