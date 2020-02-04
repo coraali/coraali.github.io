@@ -1,0 +1,97 @@
+/* All */
+body * {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Titillium Web', 'Noto Sans TC' , sans-serif , sans-serif;
+    background: #FEF49B;
+    height: 100vh;
+}
+a:link , a:visited {
+    text-decoration: none;
+    color: #2E4440;
+}
+a:hover , a:active {
+    color: #E25B44;
+}
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: #2E4440;
+}
+h1 {
+    font-weight: 400;
+    font-size: 48pt;
+    color: #2E4440;
+}
+h2 {
+    font-weight: 900;
+    font-size: 72pt;
+    color: #2E4440;
+}
+h3 {
+    font-weight: 400;
+    font-size: 48pt;
+    color: #2E4440;
+}
+h4 {
+    font-weight: 200;
+    font-size: 32pt;
+    color: #2E4440;
+    transition: .3s;
+    border-bottom: 5px solid transparent; /* 預留空間，當滑鼠移入就不會因為空間差而產生跳動 */
+    display: inline-block;
+}
+.fonts-size18 {
+    font-size: 18pt;
+    color: #2E4440;
+}
+.fonts-size21 {
+    font-size: 1.2rem;
+    color: #2E4440;
+}
+.fonts-size24 {
+    font-size: 1.4rem;
+    color: #2E4440;
+}
+.hidden {
+    display: none;
+}
+/* images */
+figure {
+    padding: 0;
+    margin: 0;
+}
+.objectfit-contain {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+.objectfit-cover {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+/* color */
+/*
+深綠 #2E4440
+淺藍綠 #89D5C9
+鵝黃 #FEF49B
+橘紅 #E25B44
+ */
+.pcolor-green {
+    color: #2E4440;
+}
+.pcolor-blue {
+    color: #89D5C9;
+}
+.pcolor-yellow {
+    color: #FEF49B;
+}
+.pcolor-orange {
+    color: #E25B44;
+}
+.font-bold {
+    font-weight: bold;
+}
