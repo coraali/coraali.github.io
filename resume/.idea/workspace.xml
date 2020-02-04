@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3594c843-b37d-4600-b53b-eb299c114fbd" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectId" id="1Wbdy2MRtJWSE7p4ZLUCp4ZpZdS" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\web_works\resume" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\web_works\resume\images" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3594c843-b37d-4600-b53b-eb299c114fbd" name="Default Changelist" comment="" />
+      <created>1579422478598</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1579422478598</updated>
+      <workItem from="1579422479971" duration="841000" />
+      <workItem from="1579423343704" duration="4769000" />
+      <workItem from="1579428140580" duration="1141000" />
+      <workItem from="1579430686929" duration="13152000" />
+      <workItem from="1580365835873" duration="803000" />
+      <workItem from="1580538083050" duration="6288000" />
+      <workItem from="1580812533693" duration="1038000" />
+      <workItem from="1580815869726" duration="14430000" />
+      <workItem from="1580836187207" duration="23000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="262" y="279" key="FileChooserDialogImpl" timestamp="1580836208643">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="262" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1580836208643" />
+    <state x="0" y="166" key="SettingsEditor" timestamp="1579430674394">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="0" y="166" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1579430674394" />
+    <state x="178" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1580816192006">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="178" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580816192006" />
+    <state x="138" y="244" key="run.anything.popup" timestamp="1579425803575">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="138" y="244" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579425803575" />
+    <state x="146" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1579432646782">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="146" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1579432646782" />
+  </component>
+</project>
