@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>hairmap</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC|Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Open Sans','Noto Sans TC';
+        }
+        .wrapper {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        a, a:link {
+            text-decoration: none;
+            color: #aaa;
+            transition: .3s;
+        }
+        a:hover {
+            color: #000;
+            text-shadow: 0 1px 1px #aaa;
+        }
+        small {
+            font-size: .7rem;
+            padding: 5px;
+        }
+        .more_link {
+            color: #fff;
+            background: hotpink;
+            padding: 3px 10px;
+            width: 70px;
+            text-align: center;
+        }
+        .more {
+            text-align: right;
+            margin: 20px 10px;
+        }
+        .cover-fit {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+            display: block;
+        }
+        .transistion {
+            transition: .5s;
+        }
+        .right {
+            text-align: right;
+        }
+        .left {
+            text-align: left;
+        }
+        .center {
+            text-align: center;
+        }
+        @media screen and (max-width:767px) {
+            .more {
+                text-align: right;
+                margin: 5px 10px 20px 10px;
+            }
+        }
+        /* ---------header----------------------------- */
+        .main_menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            width: 10%;
+            overflow: hidden;
+        }
+        .logo img {
+            max-width: 100%;
+        }
+        .main_menu nav {
+            flex: 1 0 0;
+        }
+        .main_menu nav ul {
+            display: flex;
+            list-style: none;
+        }
+        .main_menu nav li {
+            flex: 0 0 0;
+        }
+        .main_menu nav a {
+            text-align: center;
+            display: block;
+            width: 90px;
+            padding: 0 10px;
+        }
+        .login {
+            display: flex;
+            align-items: center;
+        }
+        .login a {
+            padding: 0 10px;
+        }
+        .login img {
+            width: 35%;
+        }
+        .hamburger-menu {
+            background: none;
+            border: none;
+            display: none;
+            margin-right: 15px;
+        }
+        .hamburger-menu .icon-bar {
+            background-color: #aaa;
+            display: block;
+            height: 4px;
+            margin: 0 auto 4px;
+            width: 30px;
+        }
+        @media screen and (max-width:767px) {
+            .show {
+                display: block;
+            }
+            .hidden {
+                display: none;
+            }
+            .logo {
+                width: 100px;
+                overflow: hidden;
+                margin: 10px 20px;
+            }
+        }
+        /* ---------section-banner----------------------------- */
+        .banner {
+            background: url(images/long-hair.jpg) no-repeat center top;
+            background-size: cover;
+            padding-top: 100px;
+            position: relative;
+            z-index: -2;
+        }
+        .banner::before {
+            content: "";
+            background: rgba(0, 0, 0, .5);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .banner figure {
+            width: 10%;
+            margin: 0 auto;
+        }
+        .banner img {
+            max-width: 100%;
+        }
+        .banner h1,.banner h3 {
+            color: white;
+            text-align: center;
+        }
+        .banner h1 {
+            letter-spacing: .3rem;
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin: 0;
+            line-height: 1.5;
+        }
+        .banner h3 {
+            font-weight: 300;
+            letter-spacing: .1rem;
+        }
+        .banner_bottom {
+            background: url(figure/bg_icon.png) no-repeat center center;
+            background-size: cover;
+        }
+        .banner_bottom ul {
+            display: flex;
+            justify-content: center;
+        }
+        .banner_bottom li {
+            text-align: center;
+            margin: 50px 100px;
+        }
+        .banner_bottom img {
+            width: 70%;
+        }
+        .banner_bottom p {
+            color: white;
+        }
+        .search {
+            width: 60vw;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 5px;
+            border: 2px solid hotpink;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .search span {
+            padding: 5px 10px;
+            display: flex;
+            align-items:center;
+        }
+        .search .search_text {
+            flex-grow: 1;
+        }
+        .search_location {
+            border-right:2px solid hotpink;
+        }
+        .search_go {
+            background: hotpink;
+        }
+        .search img {
+            padding-right: 3px;
+        }
+        @media screen and (max-width:767px) {
+            .banner figure {
+                width: 150px;
+                margin: 0 auto;
+            }
+            .banner h1 {
+                letter-spacing: .2rem;
+                font-size: 2rem;
+                font-weight: 500;
+                margin: 0;
+                line-height: 1.6;
+            }
+            .banner h3 {
+                font-size: 1rem;
+                letter-spacing: .1rem;
+                color: #aaa;
+            }
+            .search {
+                position: relative;
+                border: 1px solid transparent;
+                outline: 2px solid hotpink;
+                outline-offset: 3px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 3px;
+                margin: 30px auto 80px;
+                width: 80vw;
+            }
+            .search_go {
+                position: absolute;
+                width: 100%;
+                left: 0;
+                bottom: -100%;
+            }
+            .banner_bottom {
+                background: black;
+            }
+            .banner_bottom ul {
+                display: flex;
+                justify-content: space-evenly;
+                flex-direction: column;
+            }
+            .banner_bottom li {
+                /* text-align: center; */
+                /* width: 40vw; */
+                margin: 20px auto;
+            }
+            .banner_bottom img {
+                width: 70%;
+            }
+            .banner_bottom p {
+                color: white;
+            }
+        }
+        /* ---------section-subject------------------------------ */
+        .subject h2 {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .subject h2::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: #000;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .subject ul {
+            display: flex;
+            justify-content: space-between;
+        }
+        .subject li {
+            list-style: none;
+            padding: 0 10px;
+            width: 25%;
+            height: 300px;
+            position: relative;
+        }
+        .subject li img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+        .subject figcaption {
+            color:hotpink;
+            border: 1px solid hotpink;
+            background: rgba(255,255,255,.7);
+            width: 100px;
+            text-align: center;
+            padding: 5px 0;
+            position: absolute;
+            right: 0;
+            bottom: 7%; 
+            transition: .3s;
+        }
+        .subject ul a:hover {
+            color: none;
+            text-shadow: none;
+        }
+        .subject ul a:hover figcaption {
+            box-shadow: 0 0 5px #aaa;
+        }
+        @media screen and (max-width:767px) {
+            .subject ul {
+                flex-wrap: wrap;
+            }
+            .subject li {
+                width: 50%;
+                padding: 10px;
+            }
+        }
+        /* ---------section-pop------------------------------ */
+        .pop {
+            display: none;
+        }
+        @media screen and (max-width:767px) {
+            .pop {
+                display: block;
+            }
+            .pop h2 {
+                text-align: center;
+                margin: 30px 0;
+                position: relative;
+                padding-bottom: 10px;
+            }
+            .pop h2::after {
+                content: "";
+                position: absolute;
+                width: 30px;
+                height: 3px;
+                background: #000;
+                bottom: 0;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            .pop ul {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .pop li {
+                list-style: none;
+                height: calc(100vw - 130px);
+                /* height: calc(50vw - 20px); */
+                width: 50%;
+                padding: 10px;
+            }
+            .pop figure {
+                position: relative;
+                height: calc(50vw - 40px);
+                width: 100%;
+                /* width: 100%;
+                height: 100%; */
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto;
+            }
+            .pop li img {
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                display: block;
+            }
+            .pop figcaption {
+                color: white;
+                text-shadow: 0 1px 1px #000;
+                width: 100px;
+                text-align: center;
+                position: absolute;
+                left: 50%;
+                bottom: 10%;
+                transform: translate(-50%,0); 
+                transition: .3s;
+            }
+            .pop ul a:hover {
+                color: none;
+                text-shadow: none;
+            }
+            .pop ul a:hover figcaption {
+                text-shadow: -1px -1px 1px #000;
+            }
+            .pop_flwrap {
+                margin: 15px 0;
+            }
+            .pop_follow {
+                line-height: 1.5;
+                text-align: center;
+                font-size: .8rem;
+                color: #000;
+            }
+        }
+        /* ---------section-issue------------------------------ */
+        .issue h2 {
+            text-align: center;
+            margin: 30px 0;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .issue h2::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: #000;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .issue ul {
+            display: flex;
+            justify-content: center;
+        }
+        .issue li {
+            list-style: none;
+            padding: 0 10px;
+            width: 33.3%;
+            height: 200px;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        .issue li img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            /* height: 200px; */
+            display: block;
+        }
+        .issue figcaption {
+            color: white;
+            text-shadow: 0 1px 1px #000;
+            text-align: center;
+            width: 90%;
+            /* padding: 5px 0; */
+            position: absolute;
+            left: 50%;
+            top: 50%; 
+            transform: translate(-50%,-50%);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        @media screen and (max-width:767px) {
+            .issue ul {
+                flex-wrap: wrap;
+            }
+            .issue li {
+                width: 100%;
+                padding: 10px;
+            }
+        }
+        /* ---------section-download------------------------------ */
+        .download {
+            background: #eee; 
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        .download .download_grid {
+            display: grid;
+            grid-template-columns: repeat(3, auto);
+            grid-template-areas: "mobile title title" "mobile download_icon download_icon" "mobile content content";
+            grid-template-rows: auto auto auto;
+        }
+        .download figure{
+            margin: 0;
+        }
+        .mobile {
+            grid-area: mobile;
+            justify-self: right;
+            width: 50%;
+        }
+        .title {
+            grid-area: title;
+            align-self: end;
+        }
+        .title h2 {
+            position: relative;
+            display: inline-block;
+        }
+        .title h2::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: #000;
+            bottom: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .download_icon {
+            grid-area: download_icon;
+            align-self: end;
+        }
+        .ios_f,.andriod_f {
+            float:left;
+            position: relative;
+        }
+        .ios_f::after {
+            content: url(figure/btn_app_ios.png);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            transition: .3s;
+        }
+        .andriod_f::after {
+            content: url(figure/btn_app_android.png);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            transition: .3s;
+        }
+        .ios_f:hover::after{
+            opacity: 0;
+        }
+        .andriod_f:hover::after{
+            opacity: 0;
+        }
+        .content {
+            grid-area: content;
+            padding-top: 6px;
+            color:hotpink;
+        }
+        @media screen and (max-width:767px) {
+            .wrapper {
+                max-width: 100vw;
+            }
+            .download .download_grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: auto auto 0;
+            }
+            .mobile {
+                width: 100%;
+            }
+            .title, .download_icon {
+                justify-self: center;
+                align-self: center;
+            }
+            .ios_f,.andriod_f {
+                float: none;
+                position: relative;
+            }
+        }
+        /* ---------section-joinus------------------------------ */
+        .joinus {
+            position: relative;
+            z-index: 0;
+            background: #fff;
+            overflow: hidden;
+            background: rgba(0, 0, 0, .5);
+        }
+        .joinus::before {
+            content: "";
+            background: url(images/slide1.jpg) no-repeat center center ;
+            background-size: cover;
+            display: block;
+            position: absolute;
+            filter: blur(10px);
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .design, .design_title {
+            column-count: 2;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .design {
+            column-rule: 2px dotted #fff;
+        }
+        .design_title p{
+            padding: 20px 0 5px 0;
+            color: #fff;
+            font-weight: 600;
+        }
+        .design p {
+           color: #fff;
+        }
+        .big {
+            display: block;
+            font-size: 3.5rem;
+            line-height: .8;
+        }
+        .join_bottom {
+            text-align: center;
+            padding: 20px;
+        }
+        .joinus h2 {
+            display: inline-block;
+            color: #fff;
+            padding: 0 5px;
+            position: relative;
+        }
+        .joinus h2::after {
+            content: "";
+            position: absolute;
+            width: 30px;
+            height: 3px;
+            background: #fff;
+            bottom: -30%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .joinus .btn {
+            display: inline-block;
+            color: #000;
+            width: 120px;
+            background: rgba(255,255,255,.7);
+            padding: 8px 0;
+            margin: 0 3px;
+            font-size: .8rem;
+        }
+        .joinus .btn:hover {
+            background: rgba(255,255,255,1);
+        }
+        .design_title2 {
+            display: none;
+        }
+        @media screen and (max-width:767px) {
+            .design, .design_title {
+                column-count: 1;
+            }
+            .design_title2 {
+                display: block;
+            }
+            .design p {
+                padding: 20px;
+                font-size: .8rem;
+            }
+            .big {
+                display: block;
+                font-size: 3.5rem;
+                line-height: 1.3;
+            }
+            .join_bottom {
+                padding-top: 0;
+            }
+            .joinus h2 {
+                display: block;
+                margin-bottom: 20px;
+            }
+            .joinus .btn {
+                width: 40%;
+            }
+        }
+        
+        /* ---------section-contact------------------------------ */
+        .contact {
+            background: #eee; 
+            margin: 0 auto;
+        }
+        .contact figure {
+            margin: 0;
+        }
+        .contact_wrap {
+            display: flex;
+            padding: 20px 20px 80px 20px ;
+            justify-content: center;
+        }
+        .contact_wrap .left {
+            display: flex;
+            align-items: center;
+        }
+        .left .smallicon {
+            width: 30px;
+            margin-left: 100px;
+        }
+        .smallicon img {
+            width: 100%;
+        }
+        .left p {
+            width: 100%;
+            margin: 0 10px;
+            font-size: .8rem;
+            color: #aaa;
+        }
+        .mid {
+            flex-shrink: 0;
+            margin: 0 15px;
+        }
+        .mid ul {
+            display: flex;
+            flex-direction: column;
+        }
+        .mid li {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+        }
+        .mid img {
+            width: 20px;
+            display: inline-block;
+            margin-right: 5px;
+        }
+        .mid a {
+            font-size: .8rem;
+            color: #aaa;
+            align-items: center;
+            display: flex;
+            margin-right: 10px;
+        }
+        .right .joinicon {
+            position: relative;
+            height: 40px;
+        }
+        .right span {
+            color: hotpink;
+            font-size: .9rem;
+            position: absolute;
+            right: 11%;
+            top: 50%;
+            transform: translate(0,-50%);
+        }
+        .joinicon::after {
+            content: url(figure/btn_join_h.png);
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            transition: .3s;
+        }
+        .joinicon:hover::after{
+            opacity: 0;
+        }
+        .joinicon_mobile {
+            display: none;
+        }
+        @media screen and (max-width:767px) {
+            .contact_wrap {
+                flex-direction: column;
+                padding: 14px 10px;
+            }
+            .left .smallicon {
+                margin-left: 0;
+            }
+            .mid {
+                margin: 20px;
+            }
+            .mid a {
+                flex: 1 0 0;
+                margin: 3px;
+            }
+            .right {
+                text-align: center;
+                width: 100%;
+                padding: 0 30px;
+                margin-bottom: 30px;
+            }
+            .joinicon_mobile {
+                display: block;
+            }
+            .joinicon {
+                border: 1px solid hotpink;
+                border-radius: 3px;
+            }
+            .joinicon::after {
+                content: url(figure/btn_join_h_mobile.png);
+            }
+            .right span {
+                color: hotpink;
+                font-size: .9rem;
+                position: absolute;
+                left: 55%;
+                top: 50%;
+                transform: translate(-50%,-50%);
+            }
+        }
+        @media screen and (max-width:575px) {
+            .right span {
+                font-size: .7rem;
+            }
+        }
+        /* ---------footer------------------------------- */
+        footer {
+            background: #eee; 
+            margin: 0 auto;
+        }
+        footer p {
+            font-size: .9rem;
+            text-align: center;
+            border-top: 1px solid #aaa;
+            padding: 20px;
+            color: #aaa;
+        }
+        .footer_mobile {
+            display: none;
+        }
+        @media screen and (max-width:767px) {
+            .wrapper {
+                max-width: 90vw;
+            }
+            footer p {
+                border-top: 1px solid #ddd;
+                font-size: .8rem;
+            }
+            .footer_mobile {
+                display: block;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <header class="">
+        <div class="main_menu">
+            <figure class="logo">
+                <img src="figure/logo.png" alt="LOGO">
+            </figure>
+            <nav class="hidden">
+                <ul>
+                    <li><a href="">找髮型</a></li>
+                    <li><a href="">找設計師</a></li>
+                    <li><a href="">美髮誌</a></li>
+                </ul>
+            </nav>
+            <div class="login">
+                <a class="hidden" href="">註冊</a>
+                <a class="hidden" href="">登入</a>
+                <img src="figure/setting.png" alt="setting" class="setting hidden">
+                <button class="hamburger-menu show">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <section class="">
+        <div class="banner">
+            <figure>
+                <img src="images/logo_icon_g.svg" alt="">
+            </figure>
+            <h1>煩惱髮型嗎</h1>
+            <h3>給你最多髮型靈感及在地優秀設計師</h3>
+            <div class="search">
+                <span class="search_location"><img src="figure/icon_searchbar_location.png">找地區<small>&#9660</small></span>
+                <span class="search_text">搜尋髮型主題</span>
+                <span class="search_go"><img src="figure/icon_searchbar_search.png">去逛逛</span>
+            </div>
+            <div class="banner_bottom">
+                <ul>
+                    <li>
+                        <img src="figure/icon_search.svg" alt="">
+                        <p>在地設計師作品<br>輕鬆找</p>
+                    </li>
+                    <li>
+                        <img src="figure/icon_fashion.svg" alt="">
+                        <p>流行髮型<br>一手掌握</p>
+                    </li>
+                    <li>
+                        <img src="figure/icon_book.svg" alt="">
+                        <p>即時溝通預約</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="wrapper subject">
+            <h2>熱門主題</h2>
+            <ul>
+                <li>
+                    <a href="">
+                        <figcaption>慵懶風</figcaption>
+                        <img src="images/20180127001743.jpg" alt=""> 
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="images/20160419005618.jpg" alt="">
+                        <figcaption>油頭</figcaption>                    
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="images/22736_8.jpg" alt="">
+                        <figcaption>俏麗短</figcaption>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="images/cocolee.jpg" alt="">
+                        <figcaption>波浪捲</figcaption>                    
+                    </a>
+                </li>
+            </ul>
+            <p class="more"><a class="more_link" href="">more</a></p>
+            
+    </section>
+    <section class="wrapper pop">
+        <h2>人氣設計師</h2>
+        <ul>
+            <li>
+                <a href="">
+                    <figure>
+                        <img src="images/20180127001743.jpg" alt=""> 
+                        <figcaption>林宥嘉</figcaption>
+                    </figure>
+                    <div class="pop_flwrap">
+                        <p class="pop_follow">40則貼文</p><p class="pop_follow">65人追蹤</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <figure>
+                        <img src="images/20160419005618.jpg" alt="">
+                        <figcaption>韋禮安</figcaption>
+                    </figure>
+                    <div class="pop_flwrap">
+                        <p class="pop_follow">40則貼文</p><p class="pop_follow">10000人追蹤</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <figure>
+                        <img src="images/22736_8.jpg" alt="">
+                        <figcaption>不知名</figcaption>
+                    </figure>
+                    <div class="pop_flwrap"></div>
+                        <p class="pop_follow">40則貼文</p><p class="pop_follow">65人追蹤</p>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <figure>
+                        <img src="images/cocolee.jpg" alt="">
+                        <figcaption>李玟</figcaption>
+                    </figure>
+                    <div class="pop_flwrap">
+                        <p class="pop_follow">40則貼文</p><p class="pop_follow">65人追蹤</p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <p class="more"><a class="more_link" href="">more</a></p>
+    </section>
+    <section class="wrapper issue">
+            <h2>趨勢話題</h2>
+            <ul>
+                <li>
+                    <a href="">
+                        <figcaption>女生也可以很龐克?讓你帥到掉渣的最酷髮型</figcaption>
+                        <img src="images/11155.jpg" alt=""> 
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="images/138974.jpg" alt="">
+                        <figcaption>2019最夯新色!時尚高人一等</figcaption>                    
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="images/3425_14.jpg" alt="">
+                        <figcaption>當兵剃平頭?帽子使你自信滿滿!</figcaption>
+                    </a>
+                </li>
+            </ul>
+            <p class="more"><a class="more_link" href="">more</a></p>
+    </section>
+    <section class="download">
+        <div class="wrapper download_grid">
+            <figure class="mobile">
+                <img class="cover-fit" src="images/phones.png" alt="">
+            </figure>
+            <div class="title">
+                <h2>快速找到好髮型</h2>
+            </div>
+            <figure class="download_icon">
+                <figure class="ios_f">
+                    <img class="ios transistion" src="figure/btn_app_ios_h.png" alt="">
+                </figure>
+                <figure class="andriod_f"></figure>
+                    <img class="andriod transistion" src="figure/btn_app_android_h.png" alt="">
+                </figure>
+            </figure>
+            <span class="content">下載並註冊後就可以開始發表作品囉!</span>
+        </div>
+    </section>
+    <section class="joinus">
+        <div class="wrapper">
+            <div class="design_title hidden">
+                <p>已有</p>
+                <p>發表</p>
+            </div>
+            <div class="design">
+                <p>
+                    <span class="design_title2">已有</span><span class="big">635</span><br>位設計師
+                </p>
+                <p>
+                    <span class="design_title2">發表</span><span class="big">6421</span><br>張髮型作品
+                </p>
+            </div>
+            <div class="join_bottom">
+                <h2>優秀設計師募集中</h2>
+                <a class="btn transistion" href="">了解更多</a>
+                <a class="btn transistion" href="">立即免費註冊</a>
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <div class="wrapper contact_wrap">
+            <div class="left">
+                <figure class="smallicon">
+                    <img class="" src="images/logo_icon_g.svg" alt="">
+                </figure>
+                <p>HairMap美髮地圖團隊致力於打造出最貼心實用的美髮資訊交流社群，讓美髮時光成為每個人生命中的美好時刻。</p>
+            </div>
+            <div class="mid">
+                <ul>
+                    <li>
+                        <a href="">
+                            <img class="cover-fit" src="images/email.svg" alt="">
+                            聯絡我們
+                        </a>
+                        <a href=""><img src="images/ios.svg" alt="">iOS</a>
+                    </li>
+                    <li>
+                        <a href=""><img src="images/facebook_g.svg" alt="">粉絲專頁</a>
+                        <a href=""><img src="images/android.svg" alt="">Android</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right">
+                <a href="">
+                    <figure class="joinicon hidden">
+                        <img src="figure/btn_join.png" alt="">
+                        <span>設計師加入</span>
+                    </figure>
+                    <figure class="joinicon joinicon_mobile">
+                        <img src="figure/btn_join_mobile.png" alt="">
+                        <span>設計師加入</span>
+                    </figure>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <div class="wrapper">
+            <p class="hidden">Hairdodo Inc. &copy; 2016.All rights Reserved 使用者條款與隱私權政策</p>
+            <p class="footer_mobile">Hairdodo Inc. &copy; 2017.All rights Reserved<br>使用者條款與隱私權政策</p>
+        </div>
+    </footer>
+</body>
+</html>
