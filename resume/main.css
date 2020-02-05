@@ -324,6 +324,9 @@ nav ul li {
     left: 30vw;
     width: 60vw;
 }
+#redpage span {
+    text-align: justify;
+}
 @keyframes anishow {
     from {
         transform: translateX(-1500px);
@@ -476,6 +479,10 @@ nav ul li {
         left: 0;
         width: 80vw;
     }
+    .skills_content {
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 
 /* portfolio */
@@ -524,7 +531,8 @@ nav ul li {
         padding: 0 0 0 3px;
     }
     .card-wrapper {
-        flex-wrap: wrap;
+        flex-direction: column;
+        justify-content: center;
     }
     .card {
         width: 100%;
@@ -542,17 +550,20 @@ nav ul li {
 .fa-li {
     left: -4em;
 }
-.fa-user , .fa-phone , .fa-envelope , .fa-gitlab {
+.fa-user , .fa-phone , .fa-envelope , .fa-github {
     font-size: 2rem;
 }
 /* contact RWD */
 @media (max-width: 575.98px) {
     #greenpage {
         top: 0;
-        left: 3vw;
-        width: 80vw;
+        left: 0;
+        width: 70vw;
     }
     .fa-li {
         left: -2.5em;
+    }
+    .fa-user , .fa-phone , .fa-envelope , .fa-github {
+        font-size: 1.2rem;
     }
 }
