@@ -1,0 +1,35 @@
+<!--
+ * Created By PhpStorm
+ * User: Cora
+ * Date: 2020/2/12
+ * Time: 上午 12:13
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!-- css連結 -->
+    <!-- css語法 -->
+    <style></style>
+</head>
+<body>
+
+
+<!-- js連結 -->
+<!-- js語法 -->
+<script>
+    const a = [1, 2, 3 , 5, 4 , 3 , 5];
+    var b = new Set();
+    var c = new Set();
+    a.forEach(item => {
+        b.has(item) ? c.add(item) : b.add(item);
+    });
+    c.size == 0 ? console.log(-1) : console.log(Array.from(c)[0]);
+    console.log(b);
+    console.log(Array.from(c));
+
+</script>
+</body>
+</html>
