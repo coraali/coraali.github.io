@@ -1,0 +1,241 @@
+<!--
+ * Created By PhpStorm
+ * User: Cora
+ * Date: 2020/2/10
+ * Time: 下午 03:51
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Year Calendar</title>
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- css語法 -->
+    <style>
+        .title {
+            text-align: center;
+            margin: 1.5rem auto;
+        }
+        .calendar_year {
+            margin: 0 1rem 0 2rem;
+        }
+        .body_list ul {
+            width: 100%;
+            font-family: arial;
+            font-weight: bold;
+            padding: 0;
+        }
+
+        .body_list ul li {
+            width: 14.28%;
+            list-style-type: none;
+            box-sizing: border-box;
+            font-size: 1rem;
+            text-align: center;
+            margin: 3px 0;
+        }
+        .month {
+            margin: 15px 10px;
+            font-weight: bold;
+        }
+        .lightgrey {
+            color: #a8a8a8;
+        }
+
+        .darkgrey {
+            color: #565656;
+        }
+
+        .green {
+            color: #6ac13c;
+        }
+
+        .greenbox {
+            border: 1px solid transparent;
+            border-radius: 50%;
+            background: #e9f8df;
+        }
+        #popup {
+            display: none;
+            border: 6px solid #6ac13c;
+            padding: 1em;
+            width: 60vw;
+            text-align: center;
+            background: #fff;
+            position: fixed;
+            top:15%;
+            left:50%;
+            transform: translate(-50%,-50%);
+            -webkit-transform: translate(-50%,-50%);
+            color: red;
+        }
+
+        @media screen and (max-width: 991.98px) {
+            .title {
+                /*margin: 2.5rem 0;*/
+                /*padding: 1.5rem 0;*/
+            }
+            .calendar_year , .btn{
+                font-size: 2.5rem !important;
+                /*margin: 2rem 1rem 1rem 2rem;*/
+            }
+            .body_list ul li {
+                font-size: 2rem;
+            }
+
+            .lightgrey {
+                font-size: 2rem;
+            }
+            #popup {
+                font-size: 2rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="calendar container">
+    <div class="title d-flex justify-content-center">
+        <input class="green calendar_year" id="calendar_year" type="number" size="1">
+        <button type="button" class="btn btn-info">SHOW</button>
+    </div>
+    <div class="calendar_wrapper d-flex flex-wrap">
+    </div>
+    <div id="popup">請輸入年份範圍 1 ~ 9999</div>
+</div>
+
+<!-- js連結 -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+<script src="js/moment.min.js"></script>
+
+<!-- js語法 -->
+<script>
+    const month_olympic = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]; //閏年
+    const month_normal = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const month_name = ["January", "Febrary", "March", "April", "May", "June", "July", "Auguest", "September", "October", "November", "December"];
+    let calendarBody = "";
+    // 劃出十二個月
+    for (let j = 0; j < 12; j++) {
+        calendarBody += `<div class="body col-xl-3 col-lg-3 col-sm-12">
+                                <div class="lightgrey month" data-month="${month_name[j]}" data-monthnum="${j}"></div>
+                                <div class="lightgrey body_list">
+                                    <ul class="d-flex">
+                                        <li>S</li>
+                                        <li>M</li>
+                                        <li>T</li>
+                                        <li>W</li>
+                                        <li>T</li>
+                                        <li>F</li>
+                                        <li>S</li>
+                                    </ul>
+                                </div>
+                                <div class="darkgrey body_list">
+                                    <ul class="days d-flex flex-wrap">
+                                    </ul>
+                                </div>
+                            </div>`;
+    }
+    $(".calendar_wrapper").html(calendarBody);
+
+    // 當前年月日
+    let my_year = moment().format('YYYY');
+    let my_month = moment().month() + 1;
+    let my_day = moment().date();
+
+    let holder = $(".days");
+    let cyear = $("#calendar_year");
+
+    //算出某年某月第一天是星期幾
+    function dayStart(month, year) {
+        var tmpDate = new Date(year, month, 1);
+        return (tmpDate.getDay());
+    }
+
+    // console.log(dayStart(1, 2020));
+
+    function daysMonth(month, year) {
+        var tmp = moment(year).isLeapYear();
+        if (tmp) {
+            return (month_olympic[month]);
+        } else {
+            return (month_normal[month]);
+        }
+    }
+    // console.log(dayStart(daysMonth(1, 2020)));
+
+    function refreshDate(month) {
+        var str = "";
+        var totalDay = daysMonth(month, my_year); //該月總天數
+        var firstDay = dayStart(month, my_year); //該月第一天是星期幾
+        console.log(firstDay)
+
+        var myclass;
+        for (var i = 1; i < firstDay + 1; i++) {
+            str += "<li></li>"; //空白日期
+        }
+        for (var i = 1; i < totalDay + 1; i++) {
+            if (i == my_day && my_year == moment().format('YYYY') && month == moment().month()) {
+                myclass = " class='green greenbox'"; //當天日期
+            } else {
+                myclass = " class='darkgrey'";
+            }
+            str += "<li" + myclass + ">" + i + "</li>"; //寫出日期
+        }
+        return str;
+    }
+
+    // 根據月份畫出年曆
+    function yearCalendar(year){
+        const monthBody = document.querySelectorAll(".body");
+        my_year = year;
+        monthBody.forEach(function (item) {
+            cyear.val(year);
+            $monthBody = $(item);
+            $monthBody.children(".month").html($monthBody.children(".month").data('month'));
+            $monthBody.find(".days").html(refreshDate($monthBody.children(".month").data('monthnum')));
+        })
+    }
+    yearCalendar(my_year);
+
+    // 當年份更動時
+    $(".btn").on("click" , function () {
+       let chooseYear = $(calendar_year).val();
+       if ( chooseYear == "" ) {
+           chooseYear = moment().format('YYYY');
+           yearCalendar(chooseYear);
+       }
+       else if ( chooseYear < 1 || chooseYear > 9999) {
+           $('#popup').fadeToggle();
+           let popupTime = 2;
+           $(function () {
+               setTimeout(popupClose, 1000);
+           });
+           function popupClose() {
+               popupTime --;
+               if(popupTime <= 0) {
+                   $('#popup').fadeOut();
+               } else {
+                   setTimeout(popupClose, 1000);
+               }
+           }
+       }
+       else {
+           yearCalendar(chooseYear);
+       }
+    });
+
+</script>
+</body>
+</html>
