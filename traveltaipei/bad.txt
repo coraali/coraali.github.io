@@ -1,0 +1,43 @@
+// var xhr = new XMLHttpRequest();
+    //
+    // xhr.open("GET", apiurl , true);
+    // xhr.setRequestHeader("Origin", "https://www.travel.taipei/open-api/zh-tw/Attractions/All");
+    // xhr.send();
+
+    // function hello () {
+    //     xhr.onreadystatechange = function () {
+    //         if (this.readyState == 4 && this.status === 200) {
+    //             var data = JSON.parse(this.responseText);
+    //             console.log(data);
+    //         }
+    //     }
+    //
+    // }
+
+
+        // $.ajax({
+        //     dataType   : 'json',
+        //     method: "GET",
+        //     url: apiurl,
+        //     // contentType:"application/json; charset=utf-8",
+        //     success: (response) => {
+        //         console.log(response);
+        //         // cb(null,response)
+        //     },
+        //     error:function (data) {
+        //         var a=JSON.stringify(data);
+        //         // console.log(a);
+        //     }
+        // });
+
+    //
+    // getData((err,data) => {
+    //     console.log(data)
+    // });
+    // function hello() {
+    //     console.log("hi")
+    // }
+        // function  hello(err,data) {
+        //     // const {data} = data;
+        //     console.log(data)
+        // }

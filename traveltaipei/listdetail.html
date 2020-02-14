@@ -1,0 +1,257 @@
+<!--
+ * Created By PhpStorm
+ * User: Cora
+ * Date: 2020/2/13
+ * Time: 下午 10:49
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Taipei</title>
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500,700,900|Raleway:400,600,700,800,900&display=swap"
+          rel="stylesheet"> <!-- google fonts -->
+    <script src="https://kit.fontawesome.com/a933b65614.js" crossorigin="anonymous"></script><!-- fontawesome -->
+    <!-- css語法 -->
+    <style>
+        body * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', 'Noto Sans TC', sans-serif;
+        }
+
+        a:visited, a:link {
+            color: #51413E;
+        }
+
+        a:hover, a:active {
+            color: #C28338;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        h1 {
+            border-bottom: 1px solid #aaa;
+            margin: 1.5rem 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+        dt {
+            display: inline-block;
+        }
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background: #eee;
+            margin-top: 1.5rem;
+        }
+        figure {
+            height: 400px;
+        }
+        .rounded {
+            background-color: #FFEAC9;
+        }
+        figure img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+        /* color */
+        fc_green {
+            color: #405743;
+        }
+
+        fc_yellow {
+            color: #C28338;
+        }
+
+        fc_brown {
+            color: #51413E;
+        }
+
+        fc_lightyellow {
+            color: #FFEAC9;
+        }
+
+        fc_darkblue {
+            color: #152D3F;
+        }
+
+        .service_content{
+            margin-right: 8px;
+        }
+        .fa-check-circle {
+            margin-right: 3px;
+        }
+        .fa-bullhorn, fa-tag {
+            margin-right: 5px;
+            color: #C28338;
+        }
+        @media screen and (max-width: 500px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            h3 {
+                font-size: 1.4rem;
+            }
+            figure {
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+<section class="container">
+    <a href="index.html"><h1 class="fc_darkblue">台北旅遊趣</h1></a>
+    <h3 class="pb-4 mb-4 font-bold border-bottom name"></h3>
+    <div class="jumbotron p-4 p-md-5 rounded">
+        <div class="col-md-12 px-0">
+            <figure class="p-0">
+                <img class="images" src="" alt="">
+            </figure>
+        </div>
+    </div>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-12 information_main">
+                <h3 ><i class="fas fa-bullhorn"></i>景點介紹</h3>
+                <p class="introduction"></p>
+                <h4 ><i class="fas fa-tag"></i>Tag</h4>
+                <p class="target"></p>
+                <hr>
+                <h3 class="information"><i class="fas fa-bullhorn"></i>景點資訊</h3>
+                <dl>
+                    <dt>地址</dt>
+                    <dd class="address"></dd>
+                    <dt>電話</dt>
+                    <dd class="tel"></dd>
+                    <dt>推薦月份</dt>
+                    <dd class="month"></dd>
+                    <dt>官方網站</dt>
+                    <dd class="official_site"><a href="">點我前往</a></dd>
+                    <dt>臉書粉專</dt>
+                    <dd class="facebook"><a href="">點我前往</a></dd>
+                </dl>
+                <hr>
+                <h3 ><i class="fas fa-bullhorn"></i>開放時間</h3>
+                <p class="open_time">
+                    自由開放
+                </p>
+                <hr>
+                <h3 ><i class="fas fa-bullhorn"></i>收費資訊</h3>
+                <p class="ticket">
+                </p>
+                <hr>
+                <h3><i class="fas fa-bullhorn"></i>旅遊叮嚀</h3>
+                <p class="remind">
+                </p>
+                <hr>
+                <h3 ><i class="fas fa-bullhorn"></i>服務設施</h3>
+                <p class="service">
+                </p>
+            </div>
+        </div>
+    </main>
+</section>
+<footer>
+    <p>資料來源 <a href="https://www.travel.taipei/zh-tw">台北旅遊資訊網</a>
+    </p>
+    <p>
+        <a href="#">Back to top</a>
+    </p>
+</footer>
+
+<!-- js連結 -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script> <!-- jQuery min -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script> <!-- bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script> <!-- bootstrap -->
+<!-- js語法 -->
+<script>
+    const cors = 'https://cors-anywhere.herokuapp.com/'; // use cors-anywhere to fetch api data
+    let detalUrl = new URL(location.href);
+    let params = detalUrl.searchParams;
+    let detailId = params.get('id');
+    let detailCategory = params.get('category');
+    var text = "";
+
+    // 景點資訊api
+    const apiurl = `https://www.travel.taipei/open-api/zh-tw/Attractions/All?categoryIds=${detailCategory}`; // origin api url
+    /** fetch api url by cors-anywhere */
+    axios.get(`${cors}${apiurl}`)
+        .then((response) => {
+                const msg = response;
+                var {total} = msg.data;
+                var {data} = msg.data;
+                var filterData = data.filter(function(item, index, array){
+                    return item.id == detailId;
+                });
+                console.log(filterData);
+                $(".name").html(filterData[0].name);
+                filterData[0].images.length == 0 ? $(".images").attr("src","images/noimages.png") : $(".images").attr("src",`${filterData[0].images[0].src}`); // 圖片
+                replaceBr($(".introduction"),filterData[0].introduction);// 介紹
+                filterData[0].target.length == 0 ? $(".target").html("") : pushdata($(".target"),filterData[0].target); // tag
+                $(".address").html(filterData[0].address); // 地址
+                $(".tel").html(filterData[0].tel); // 電話
+                $(".month").html(filterData[0].months); // 推薦月份
+                $(".official_site a").attr("src",filterData[0].official_site); // 官方網站
+                $(".facebook a").attr("src",filterData[0].facebook); // 臉書粉專
+                replaceBr($(".open_time"),filterData[0].open_time); // 開放時間
+                replaceBr($(".ticket"),filterData[0].ticket); //收費資訊
+                replaceBr($(".remind"),filterData[0].remind); //旅遊叮嚀
+                filterData[0].service.length == 0 ? $(".service").html("依據官網公告") : pushservice($(".service"),filterData[0].service); // 服務設施
+
+            },
+            (error) => {
+                var errormsg=JSON.stringify(error);
+                console.log(errormsg);
+            }
+        );
+
+    // tag陣列格式用
+    function pushdata(element,data) {
+        let str = "";
+        for ( let i=0 ; i < data.length ; i++ ) {
+            str += `#${data[i].name} `;
+        }
+        element.html(str)
+    }
+    // service陣列格式用
+    function pushservice(element,data) {
+        let str = "";
+        for ( let i=0 ; i < data.length ; i++ ) {
+            str += `<span class="service_content"><i class="far fa-check-circle"></i>${data[i].name}</span>`;
+        }
+        element.html(str)
+    }
+    // 字串格式用
+    function  replaceBr(element,str) {
+        if ( str == "" ) {
+            element.html("各業者不同，依據現場公告")
+        }
+        else {
+            str = JSON.stringify(str);
+            str = str.replace(/(?:\\[rn])+/g, "<br>").replace(/(?:["])+/g,""); // 把/r/n改成br
+            element.html(str)
+        }
+    }
+</script>
+</body>
+</html>

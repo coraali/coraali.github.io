@@ -1,0 +1,356 @@
+<!--
+ * Created By PhpStorm
+ * User: Cora
+ * Date: 2020/2/12
+ * Time: 下午 04:41
+-->
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Taipei</title>
+
+    <!-- css連結 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- bootstrap -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,500,700,900|Raleway:400,600,700,800,900&display=swap"
+          rel="stylesheet"> <!-- google fonts -->
+    <script src="https://kit.fontawesome.com/a933b65614.js" crossorigin="anonymous"></script><!-- fontawesome -->
+    <!-- css語法 -->
+    <style>
+        body * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', 'Noto Sans TC', sans-serif;
+        }
+        a:visited, a:link {
+            color: #51413E;
+        }
+
+        a:hover, a:active {
+            color: #C28338;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        h1 {
+            border-bottom: 1px solid #aaa;
+            margin: 1.5rem 0;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* color */
+        fc_green {
+            color: #405743;
+        }
+
+        fc_yellow {
+            color: #C28338;
+        }
+
+        fc_brown {
+            color: #51413E;
+        }
+
+        fc_lightyellow {
+            color: #FFEAC9;
+        }
+
+        fc_darkblue {
+            color: #152D3F;
+        }
+
+        .menu-wrapper {
+            /*max-width: 500px;*/
+            height: 40px;
+            padding: 0 30px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-wrapper .menu-item {
+            height: 100%;
+            overflow: auto;
+            white-space: nowrap;
+        }
+
+        .menu-wrapper .menu-item::-webkit-scrollbar {
+            display: none;
+        }
+        .menu-wrapper .pointer {
+            height: 40px;
+            width: 30px;
+            line-height: 38px;
+            text-align: center;
+            position: absolute;
+            top: 0;
+            font-size: 1.5rem;
+        }
+        .menu-wrapper .pointer i {
+            color: #152D3F;
+            cursor: pointer;
+        }
+        .menu-wrapper .left-pointer {
+            left: 0;
+        }
+        .menu-wrapper .right-pointer {
+            right: 0;
+        }
+        .nav {
+            flex-wrap: nowrap;
+        }
+        .nav-item {
+            margin: 0 2rem 2rem 0;
+        }
+
+        .pro_nav_link.active {
+            border-bottom: 3px solid #C28338;
+            background-color: transparent;
+            font-weight: bolder;
+        }
+
+        .pro_nav_link {
+            border-bottom: 3px solid transparent;
+            padding: 0 0 5px 0;
+        }
+
+        .pro_nav_link:hover {
+            border-bottom: 3px solid #C28338 !important;
+        }
+
+        .card {
+            width: 22%;
+            margin: 0 1rem 1rem 1rem;
+            cursor: pointer;
+        }
+
+        .card-img-top {
+            object-fit: cover;
+            height: 8vw;
+        }
+
+        .card:hover {
+            transform: scale(1.1, 1.1);
+            transform-origin: center center 0px;
+            transition: all 0.3s;
+        }
+
+        .arrname {
+            font-weight: bold;
+        }
+
+        @media screen and (max-width: 1080px) {
+            .card {
+                width: 21%;
+                margin: 0 1rem 1rem 1rem;
+            }
+            .card-img-top {
+                height: 10vw;
+            }
+        }
+
+        @media (max-width: 575.98px) {
+            .card {
+                width: 100%;
+                margin: 0 1rem 2rem 1rem;
+            }
+            .card-img-top {
+                height: 80vw;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<main class="container">
+    <h1 class="fc_darkblue">台北旅遊趣</h1>
+    <section id="" class="">
+        <div class="menu-wrapper">
+            <ul class="nav menu-item" id="myTab" role="tablist">
+            </ul>
+            <span class="pointer left-pointer dis">
+                <i class="fas fa-angle-left"></i>
+            </span>
+            <span class="pointer right-pointer">
+                <i class="fas fa-angle-right"></i>
+            </span>
+        </div>
+        <div class="tab-content my-2" id="myTabContent">
+        </div>
+    </section>
+
+</main>
+<!-- js連結 -->
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script> <!-- jQuery min -->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script> <!-- bootstrap -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script> <!-- bootstrap -->
+<!-- js語法 -->
+<script>
+
+    const cors = 'https://cors-anywhere.herokuapp.com/'; // use cors-anywhere to fetch api data
+    // 分類資訊api
+    const categoryapiurl = 'https://www.travel.taipei/open-api/zh-tw/Miscellaneous/Categories?type=Attractions';
+    const nav = $(".nav");
+    var categorystr = "";
+    var cardstr = "";
+    /** fetch api url by cors-anywhere */
+    axios.get(`${cors}${categoryapiurl}`)
+        .then((response) => {
+                const categorymsg = response.data;
+                var category = categorymsg.data.Category;
+                // console.log(categorymsg);
+                // console.log(category);
+                // document.body.innerHTML = JSON.stringify(msg)
+                categorystr = `<li class="nav-item">
+                    <a class="pro_nav_link active fc_darkblue" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" data-categoryid="${category[0].id}">${category[0].name}</a>
+                </li>`;
+                cardstr = `<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <div class="card-wrapper d-flex firstcard flex-wrap">
+                    </div>
+                </div>`;
+                for (let i = 1; i < category.length; i++) {
+                    categorystr = categorystr + `<li class="nav-item">
+                    <a class="pro_nav_link " id="profile${category[i].id}-tab" data-toggle="tab" href="#profile${category[i].id}" role="tab" aria-controls="profile${category[i].id}" aria-selected="false" data-categoryid="${category[i].id}">${category[i].name}</a>
+                    </li>`;
+                    cardstr = cardstr + `<div class="tab-pane fade" id="profile${category[i].id}" role="tabpanel" aria-labelledby="profile${category[i].id}-tab">
+                    <div class="card-wrapper d-flex flex-wrap">
+                    </div>
+                </div>`;
+                }
+                // console.log (categorystr)
+                nav.html(categorystr); // 分類畫上去
+                $(".tab-content").html(cardstr); // 卡片外框畫上去
+
+                // 第一個景點資訊api
+                const firstapiurl = `https://www.travel.taipei/open-api/zh-tw/Attractions/All?categoryIds=${category[0].id}`;
+                var firstcard = "";
+                /** fetch api url by cors-anywhere */
+                axios.get(`${cors}${firstapiurl}`)
+                    .then((response) => {
+                            const firstmsg = response;
+                            var {total} = firstmsg.data;
+                            var {data} = firstmsg.data;
+                            // console.log(firstmsg);
+                            // console.log(total);
+                            // console.log(data);
+                            // document.body.innerHTML = JSON.stringify(msg)
+                            for (let j = 0; j < data.length; j++) {
+                                firstcard = firstcard + `<div class="card ">
+                            <a href="listdetail.html?id=${data[j].id}&category=${data[j].category[0].id}" target="_blank">
+                                <img src="${data[j].images[0].src}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text"><span class="arrname">${data[j].name}</span><br>${data[j].address}</p>
+                                </div>
+                            </a>
+                        </div>`;
+                            }
+                            $(".firstcard").html(firstcard)
+
+                        },
+                        (error) => {
+                            var errormsg = JSON.stringify(error);
+                            console.log(errormsg);
+                        }
+                    );
+
+            },
+            (error) => {
+                var errormsg = JSON.stringify(error);
+                console.log(errormsg);
+            }
+        );
+
+    $(document).on("click", ".nav-item", function () {
+        let chooseCategory = $(this).children("a").data("categoryid");
+        const choosecategoryurl = `https://www.travel.taipei/open-api/zh-tw/Attractions/All?categoryIds=${chooseCategory}`; // origin api url
+        var chooseCard = "";
+        let aImages = "";
+        /** fetch api url by cors-anywhere */
+        axios.get(`${cors}${choosecategoryurl}`)
+            .then((response) => {
+                    const cCategorymsg = response;
+                    var {total} = cCategorymsg.data;
+                    var {data} = cCategorymsg.data;
+                    // console.log(total)
+                    // console.log(data[0].images[0].src)
+                    for (let k = 0; k < data.length; k++) {
+                        data[k].images.length === 0 ? aImages = "images/noimg.png" : aImages = data[k].images[0].src;
+                        // console.log(aImages)
+                        chooseCard = chooseCard + `<div class="card ">
+                            <a href="listdetail.html?id=${data[k].id}&category=${data[k].category[0].id}" target="_blank">
+                                <img src="${aImages}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <p class="card-text"><span class="arrname">${data[k].name}</span><br>${data[k].address}</p>
+                                </div>
+                            </a>
+                        </div>`;
+                    }
+                    // console.log(chooseCard)
+                    $(`#profile${chooseCategory}`).children(".card-wrapper").html(chooseCard);
+                },
+                (error) => {
+                    var errormsg = JSON.stringify(error);
+                    console.log(errormsg);
+                }
+            );
+    });
+
+    // 景點資訊api
+    // const apiurl = 'https://www.travel.taipei/open-api/zh-tw/Attractions/All'; // origin api url
+    // /** fetch api url by cors-anywhere */
+    // axios.get(`${cors}${apiurl}`)
+    //     .then((response) => {
+    //             const msg = response;
+    //             var {total} = msg.data;
+    //             var {data} = msg.data;
+    //             // console.log(msg)
+    //             // console.log(total)
+    //             // console.log(data)
+    //             // document.body.innerHTML = JSON.stringify(msg)
+    //         },
+    //         (error) => {
+    //             var errormsg=JSON.stringify(error);
+    //             console.log(errormsg);
+    //         }
+    //     );
+
+    // nav滾動
+    var lp, rp, mItems, menu, sc, pos;
+    lp = $(".left-pointer");
+    rp = $(".right-pointer");
+    mItems = $(".menu-item");
+
+    lp.click(function(){
+        sc = mItems.width() - 60;
+        pos = mItems.scrollLeft() - sc;
+        mItems.animate({'scrollLeft': pos}, 'slow');
+    });
+    rp.click(function(){
+        sc = mItems.width() - 60;
+        pos = mItems.scrollLeft() + sc;
+        mItems.animate({'scrollLeft': pos}, 'slow');
+    });
+
+    mItems.scroll(function(){
+        if( $(this).scrollLeft() == 0){
+            $(".left-pointer").addClass("dis");
+        }else{
+            $(".left-pointer").removeClass("dis");
+        }
+    });
+</script>
+</body>
+</html>
