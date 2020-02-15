@@ -1,4 +1,9 @@
-// var xhr = new XMLHttpRequest();
+    **meta要補**
+    When I added this, my mobile browsers suddenly showed reasonable text sizes.
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+
+    // var xhr = new XMLHttpRequest();
     //
     // xhr.open("GET", apiurl , true);
     // xhr.setRequestHeader("Origin", "https://www.travel.taipei/open-api/zh-tw/Attractions/All");
