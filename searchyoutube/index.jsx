@@ -84,7 +84,7 @@ class PageButton extends React.Component {
     }
 }
 
-const apiKey = "AIzaSyAEoDCSlAEPsKLIUMp5dIZz0c8CcG-oeA0";
+const apiKey = "YOUR_API_KEY";
 
 class YoutubeForm extends React.Component {
     constructor(props) {
